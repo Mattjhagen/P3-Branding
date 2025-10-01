@@ -335,6 +335,11 @@ export class Web3Service {
 export const web3Service = new Web3Service();
 
 // Utility functions
+export const formatAddress = (address: string, length: number = 6): string => {
+  if (!address) return '';
+  return `${address.slice(0, length)}...${address.slice(-length)}`;
+};
+
 export const formatCurrency = (amount: number, currency: string = 'BTC'): string => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',

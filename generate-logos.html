@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P³ Lending Logo Generator</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .logo-preview {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px dashed #e2e8f0;
+            border-radius: 10px;
+            background: #f8fafc;
+        }
+        
+        .logo-dark {
+            background: #1a1a1a;
+            color: white;
+        }
+        
+        .logo-icon {
+            display: inline-block;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 50%;
+            padding: 20px;
+            margin: 10px;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 30px;
+        }
+        
+        .logo-text {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+        }
+        
+        .logo-subscript {
+            font-size: 24px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            vertical-align: super;
+        }
+        
+        .logo-lending {
+            font-size: 16px;
+            font-weight: 400;
+            color: #64748b;
+            margin-top: 5px;
+        }
+        
+        .logo-lending.dark {
+            color: #ffffff;
+        }
+        
+        .icon-p {
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .icon-3 {
+            font-size: 18px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            vertical-align: super;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>P³ Lending Logo Generator</h1>
+        
+        <div class="logo-preview">
+            <h3>Primary Logo (Light Theme)</h3>
+            <div>
+                <span class="logo-text">P</span><span class="logo-subscript">³</span>
+                <div class="logo-lending">Lending</div>
+            </div>
+            <button class="download-btn" onclick="downloadLogo('light')">Download Light Logo</button>
+        </div>
+        
+        <div class="logo-preview logo-dark">
+            <h3>Primary Logo (Dark Theme)</h3>
+            <div>
+                <span class="logo-text">P</span><span class="logo-subscript">³</span>
+                <div class="logo-lending dark">Lending</div>
+            </div>
+            <button class="download-btn" onclick="downloadLogo('dark')">Download Dark Logo</button>
+        </div>
+        
+        <div class="logo-preview">
+            <h3>Icon Only</h3>
+            <div class="logo-icon">
+                <span class="icon-p">P</span><span class="icon-3">³</span>
+            </div>
+            <button class="download-btn" onclick="downloadIcon()">Download Icon</button>
+        </div>
+        
+        <div class="logo-preview">
+            <h3>Text Only</h3>
+            <div>
+                <span class="logo-text">P</span><span class="logo-subscript">³</span> <span class="logo-lending">Lending</span>
+            </div>
+            <button class="download-btn" onclick="downloadText()">Download Text Logo</button>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #f1f5f9; border-radius: 10px;">
+            <h3>Logo Specifications</h3>
+            <p><strong>Meaning:</strong> P³ = Peer-to-Peer (2) + Helping those in need (1)</p>
+            <p><strong>Colors:</strong> Blue gradient (#667eea to #764ba2) with accent blue (#4facfe)</p>
+            <p><strong>Font:</strong> Inter (modern, clean, professional)</p>
+            <p><strong>Usage:</strong> Website, mobile app, social media, business cards</p>
+        </div>
+    </div>
+
+    <script>
+        function downloadLogo(theme) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 400;
+            canvas.height = 160;
+            
+            // Set background
+            if (theme === 'dark') {
+                ctx.fillStyle = '#1a1a1a';
+            } else {
+                ctx.fillStyle = '#ffffff';
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw P
+            ctx.font = 'bold 72px Inter, sans-serif';
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillText('P', 40, 100);
+            
+            // Draw ³
+            ctx.font = '600 36px Inter, sans-serif';
+            const accentGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            accentGradient.addColorStop(0, '#4facfe');
+            accentGradient.addColorStop(1, '#00f2fe');
+            ctx.fillStyle = accentGradient;
+            ctx.fillText('³', 120, 70);
+            
+            // Draw Lending
+            ctx.font = '400 24px Inter, sans-serif';
+            ctx.fillStyle = theme === 'dark' ? '#ffffff' : '#64748b';
+            ctx.fillText('Lending', 40, 140);
+            
+            // Download
+            const link = document.createElement('a');
+            link.download = `p3-lending-logo-${theme}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        function downloadIcon() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 240;
+            canvas.height = 240;
+            
+            // Background circle
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 110;
+            
+            const bgGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+            bgGradient.addColorStop(0, '#f8fafc');
+            bgGradient.addColorStop(1, '#e2e8f0');
+            ctx.fillStyle = bgGradient;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Border
+            const borderGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            borderGradient.addColorStop(0, '#667eea');
+            borderGradient.addColorStop(1, '#764ba2');
+            ctx.strokeStyle = borderGradient;
+            ctx.lineWidth = 4;
+            ctx.stroke();
+            
+            // Draw P
+            ctx.font = 'bold 96px Inter, sans-serif';
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.textAlign = 'center';
+            ctx.fillText('P', centerX, centerY + 30);
+            
+            // Draw ³
+            ctx.font = '600 48px Inter, sans-serif';
+            const accentGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            accentGradient.addColorStop(0, '#4facfe');
+            accentGradient.addColorStop(1, '#00f2fe');
+            ctx.fillStyle = accentGradient;
+            ctx.fillText('³', centerX + 60, centerY - 20);
+            
+            // Download
+            const link = document.createElement('a');
+            link.download = 'p3-lending-icon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        function downloadText() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 300;
+            canvas.height = 80;
+            
+            // Transparent background
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw P
+            ctx.font = 'bold 48px Inter, sans-serif';
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillText('P', 20, 50);
+            
+            // Draw ³
+            ctx.font = '600 24px Inter, sans-serif';
+            const accentGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            accentGradient.addColorStop(0, '#4facfe');
+            accentGradient.addColorStop(1, '#00f2fe');
+            ctx.fillStyle = accentGradient;
+            ctx.fillText('³', 70, 35);
+            
+            // Draw Lending
+            ctx.font = '400 16px Inter, sans-serif';
+            ctx.fillStyle = '#64748b';
+            ctx.fillText('Lending', 100, 50);
+            
+            // Download
+            const link = document.createElement('a');
+            link.download = 'p3-lending-text.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
