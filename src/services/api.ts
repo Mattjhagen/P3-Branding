@@ -13,7 +13,7 @@ import {
 } from '@/types';
 
 // API configuration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.p3lending.com';
 const API_VERSION = 'v1';
 
 // Mock data for development when backend is unavailable

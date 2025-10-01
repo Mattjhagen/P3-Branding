@@ -21,6 +21,7 @@ import ReputationPage from '@/pages/ReputationPage';
 import KYCPage from '@/pages/KYCPage';
 import ProfilePage from '@/pages/ProfilePage';
 import AdminPage from '@/pages/AdminPage';
+import OAuthCallback from '@/pages/OAuthCallback';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 // Loading component
@@ -146,6 +147,9 @@ const App: React.FC = () => {
           <Route path="/register" element={
             isAuthenticated ? <Navigate to="/dashboard" replace /> : <RegisterPage />
           } />
+
+          {/* OAuth callback routes */}
+          <Route path="/auth/callback/:provider" element={<OAuthCallback />} />
 
           {/* Protected routes */}
           <Route path="/dashboard" element={
