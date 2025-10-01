@@ -5,12 +5,13 @@
   "main": "index.html",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run postinstall && vite build",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler pages deploy dist",
     "test": "jest",
     "lint": "eslint src --ext .js,.ts,.jsx,.tsx",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "postinstall": "node scripts/fix-reown.js"
   },
   "keywords": [
     "bitcoin",
