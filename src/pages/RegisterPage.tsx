@@ -169,7 +169,7 @@ const RegisterPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
       <div className="max-w-md w-full space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -184,10 +184,10 @@ const RegisterPage: React.FC = () => {
               className="h-12 w-12 rounded-full"
             />
           </div>
-          <h2 className="mt-6 text-3xl font-bold gradient-text">
+          <h2 className="mt-6 text-3xl font-bold text-gray-900">
             Join P³ Lending
           </h2>
-          <p className="mt-2 text-sm text-gray-400">
+          <p className="mt-2 text-sm text-gray-600">
             Create your account to start lending and borrowing Bitcoin
           </p>
         </motion.div>

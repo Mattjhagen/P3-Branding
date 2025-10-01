@@ -124,6 +124,41 @@ export class AuthService {
     }
   }
 
+  // Initialize OAuth flow
+  initOAuth(provider: string): void {
+    const oauthProvider = this.oauthProviders.get(provider);
+    if (!oauthProvider) {
+      throw new Error(`OAuth provider ${provider} not configured`);
+    }
+
+    // Build OAuth URL
+    const params = new URLSearchParams({
+      client_id: oauthProvider.clientId,
+      redirect_uri: oauthProvider.redirectUri,
+      scope: oauthProvider.scope,
+      response_type: 'code',
+      state: Math.random().toString(36).substring(7)
+    });
+
+    const oauthUrl = this.getOAuthUrl(provider, params);
+    
+    // Redirect to OAuth provider
+    window.location.href = oauthUrl;
+  }
+
+  private getOAuthUrl(provider: string, params: URLSearchParams): string {
+    switch (provider) {
+      case 'google':
+        return `https://accounts.google.com/oauth/authorize?${params.toString()}`;
+      case 'github':
+        return `https://github.com/login/oauth/authorize?${params.toString()}`;
+      case 'discord':
+        return `https://discord.com/api/oauth2/authorize?${params.toString()}`;
+      default:
+        throw new Error(`Unsupported OAuth provider: ${provider}`);
+    }
+  }
+
   // OAuth authentication
   async authenticateWithOAuth(provider: string): Promise<{ user: User; token: string }> {
     const oauthProvider = this.oauthProviders.get(provider);

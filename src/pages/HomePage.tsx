@@ -20,7 +20,7 @@ import { apiService } from '@/services/api';
 import { PlatformMetrics } from '@/types';
 
 const HomePage: React.FC = () => {
-  // Cache bust: Apple redesign v2.0 - Force deployment
+  // Simple test version to debug rendering issues
   const { isAuthenticated } = useAuthStore();
   const [metrics, setMetrics] = useState<PlatformMetrics | null>(null);
   const [isLoading, setIsLoading] = useState(true);
