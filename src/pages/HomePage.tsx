@@ -105,7 +105,7 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
+    <div className="min-h-screen bg-white">
       {/* Hero Section - Apple-inspired minimalism */}
       <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800">
         {/* Subtle background pattern */}
