@@ -43,6 +43,27 @@
 </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Aggressive cache clearing for deployment issues
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            registration.unregister();
+          }
+        });
+      }
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          for (let name of names) {
+            caches.delete(name);
+          }
+        });
+      }
+      // Force reload after cache clear
+      if (window.location.search.indexOf('cachebust') === -1) {
+        window.location.href = window.location.href + (window.location.search ? '&' : '?') + 'cachebust=' + Date.now();
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

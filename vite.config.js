@@ -6,35 +6,35 @@ import path from 'path'
 export default defineConfig({
   plugins: [
     react(),
-                VitePWA({
-                  registerType: 'prompt',
-                  workbox: {
-                    skipWaiting: true,
-                    clientsClaim: true,
-                    cleanupOutdatedCaches: true
-                  },
-                  includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
-                  manifest: {
-                    name: 'P³ Lending - Decentralized P2P Bitcoin Lending',
-                    short_name: 'P³ Lending',
-                    description: 'Revolutionary peer-to-peer Bitcoin lending platform with AI risk analysis',
-                    theme_color: '#667eea',
-                    background_color: '#ffffff',
-                    display: 'standalone',
-                    icons: [
-                      {
-                        src: 'pwa-192x192.png',
-                        sizes: '192x192',
-                        type: 'image/png'
-                      },
-                      {
-                        src: 'pwa-512x512.png',
-                        sizes: '512x512',
-                        type: 'image/png'
-                      }
-                    ]
-                  }
-                })
+                // VitePWA({
+                //   registerType: 'prompt',
+                //   workbox: {
+                //     skipWaiting: true,
+                //     clientsClaim: true,
+                //     cleanupOutdatedCaches: true
+                //   },
+                //   includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+                //   manifest: {
+                //     name: 'P³ Lending - Decentralized P2P Bitcoin Lending',
+                //     short_name: 'P³ Lending',
+                //     description: 'Revolutionary peer-to-peer Bitcoin lending platform with AI risk analysis',
+                //     theme_color: '#667eea',
+                //     background_color: '#ffffff',
+                //     display: 'standalone',
+                //     icons: [
+                //       {
+                //         src: 'pwa-192x192.png',
+                //         sizes: '192x192',
+                //         type: 'image/png'
+                //       },
+                //       {
+                //         src: 'pwa-512x512.png',
+                //         sizes: '512x512',
+                //         type: 'image/png'
+                //       }
+                //     ]
+                //   }
+                // })
   ],
   resolve: {
     alias: {

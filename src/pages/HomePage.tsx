@@ -105,7 +105,7 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
       {/* Hero Section - Steve Jobs Era Minimalism */}
       <section className="relative bg-white">
         <div className="max-w-4xl mx-auto px-8 py-24 md:py-32">
@@ -117,9 +117,9 @@ const HomePage: React.FC = () => {
           >
             <div className="flex items-center justify-center mb-8">
               <img 
-                src="/logo.jpeg" 
+                src="/logo-simple.svg" 
                 alt="P³ Lending" 
-                className="h-16 w-16 rounded-full mr-6"
+                className="h-20 w-20 mr-6"
               />
               <h1 className="text-7xl md:text-9xl font-thin tracking-tighter text-gray-900">
                 P³ Lending

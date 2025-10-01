@@ -36,36 +36,17 @@
     
     <!-- Security headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     
     <!-- PWA manifest -->
     <link rel="manifest" href="/manifest.json">
-  <script type="module" crossorigin src="/assets/index-C9XaVfM9.js"></script>
+  <script type="module" crossorigin src="/assets/index-CRtsrZfo.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/vendor-DKGanPlE.js">
   <link rel="modulepreload" crossorigin href="/assets/web3-D8p30D77.js">
   <link rel="modulepreload" crossorigin href="/assets/ui-BWRRsdbR.js">
-  <link rel="stylesheet" crossorigin href="/assets/index-BIHRDsgm.css">
-</head>
+  <link rel="stylesheet" crossorigin href="/assets/index-3Jeo7xcU.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
   <body>
-    <div id="root"></div>
-    <script>
-      // Clear service worker cache
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-          for(let registration of registrations) {
-            registration.unregister();
-          }
-        });
-      }
-      // Clear all caches
-      if ('caches' in window) {
-        caches.keys().then(function(names) {
-          for (let name of names) {
-            caches.delete(name);
-          }
-        });
-      }
-    </script>
+    <div id="root"></div>
   </body>
 </html>
