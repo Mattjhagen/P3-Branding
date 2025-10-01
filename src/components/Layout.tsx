@@ -271,8 +271,8 @@ const Layout: React.FC = () => {
               <ul className="space-y-2 text-sm">
                 <li><a href="/help" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
                 <li><a href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-                <li><a href="/terms" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                <li><a href="/terms-of-service.html" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                <li><a href="/privacy-policy.html" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
               </ul>
             </div>
           </div>

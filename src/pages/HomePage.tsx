@@ -115,9 +115,16 @@ const HomePage: React.FC = () => {
             transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center"
           >
-            <h1 className="text-7xl md:text-9xl font-thin mb-8 tracking-tighter text-gray-900">
-              P³ Lending
-            </h1>
+            <div className="flex items-center justify-center mb-8">
+              <img 
+                src="/logo.jpeg" 
+                alt="P³ Lending" 
+                className="h-16 w-16 rounded-full mr-6"
+              />
+              <h1 className="text-7xl md:text-9xl font-thin tracking-tighter text-gray-900">
+                P³ Lending
+              </h1>
+            </div>
             <p className="text-2xl md:text-3xl text-gray-600 mb-16 max-w-2xl mx-auto font-light leading-relaxed">
               The future of finance is{' '}
               <span className="text-gray-900 font-normal">decentralized</span>,{' '}

@@ -292,11 +292,11 @@ const LoginPage: React.FC = () => {
         >
           <p className="text-xs text-gray-500">
             By signing in, you agree to our{' '}
-            <a href="/terms" className="text-primary-400 hover:text-primary-300">
+            <a href="/terms-of-service.html" className="text-primary-400 hover:text-primary-300">
               Terms of Service
             </a>{' '}
             and{' '}
-            <a href="/privacy" className="text-primary-400 hover:text-primary-300">
+            <a href="/privacy-policy.html" className="text-primary-400 hover:text-primary-300">
               Privacy Policy
             </a>
           </p>
