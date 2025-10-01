@@ -87,9 +87,9 @@ const Layout: React.FC = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
                 <img 
-                  src="/logo.jpeg" 
+                  src="/logo-icon.svg" 
                   alt="P³ Lending" 
-                  className="h-8 w-8 rounded-full"
+                  className="h-8 w-8"
                 />
                 <span className="ml-3 text-xl font-bold gradient-text">
                   P³ Lending
@@ -244,9 +244,9 @@ const Layout: React.FC = () => {
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
                 <img 
-                  src="/logo.jpeg" 
+                  src="/logo-icon.svg" 
                   alt="P³ Lending" 
-                  className="h-8 w-8 rounded-full"
+                  className="h-8 w-8"
                 />
                 <span className="text-xl font-bold gradient-text">P³ Lending</span>
               </div>

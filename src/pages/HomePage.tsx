@@ -117,7 +117,7 @@ const HomePage: React.FC = () => {
           >
             <div className="flex items-center justify-center mb-8">
               <img 
-                src="/logo-simple.svg" 
+                src="/logo-p3.svg" 
                 alt="P³ Lending" 
                 className="h-20 w-20 mr-6"
               />
