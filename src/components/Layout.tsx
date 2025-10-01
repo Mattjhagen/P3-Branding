@@ -22,6 +22,7 @@ import { useThemeStore } from '@/store/themeStore';
 import { authService } from '@/services/auth';
 import { web3Service } from '@/services/web3';
 import { formatAddress } from '@/services/web3';
+import { WalletConnect } from '@/components/WalletConnect';
 import toast from 'react-hot-toast';
 
 const Layout: React.FC = () => {
@@ -144,31 +145,11 @@ const Layout: React.FC = () => {
               </button>
 
               {/* Wallet connection */}
-              {isWalletConnected ? (
-                <div className="flex items-center space-x-2">
-                  <div className="flex items-center space-x-2 px-3 py-2 bg-green-500/20 border border-green-500/30 rounded-lg">
-                    <div className="h-2 w-2 bg-green-400 rounded-full"></div>
-                    <span className="text-sm text-green-400">
-                      {formatAddress(walletAddress)}
-                    </span>
-                  </div>
-                  <button
-                    onClick={handleLogout}
-                    className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
-                    aria-label="Logout"
-                  >
-                    <LogOut className="h-5 w-5 text-gray-400" />
-                  </button>
-                </div>
-              ) : (
-                <button
-                  onClick={handleWalletConnect}
-                  className="flex items-center space-x-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors"
-                >
-                  <Wallet className="h-4 w-4" />
-                  <span>Connect Wallet</span>
-                </button>
-              )}
+              <WalletConnect 
+                className="flex items-center space-x-2"
+                showBalance={true}
+                showNetwork={true}
+              />
 
               {/* Mobile menu button */}
               <button

@@ -20,12 +20,14 @@ import {
   Hand
 } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
+import { useThemeStore } from '@/store/themeStore';
 import { apiService } from '@/services/api';
 import { PlatformMetrics } from '@/types';
 
 const HomePage: React.FC = () => {
   // Simple test version to debug rendering issues
   const { isAuthenticated } = useAuthStore();
+  const { theme } = useThemeStore();
   const [metrics, setMetrics] = useState<PlatformMetrics | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -109,9 +111,17 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className={`min-h-screen overflow-hidden ${
+      theme === 'light' 
+        ? 'bg-white text-gray-900' 
+        : 'bg-black text-white'
+    }`}>
       {/* Animated Background */}
-      <div className="fixed inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
+      <div className={`fixed inset-0 ${
+        theme === 'light'
+          ? 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
+          : 'bg-gradient-to-br from-black via-gray-900 to-black'
+      }`}>
         <div className="absolute inset-0">
           {/* Animated grid pattern */}
           <div className="absolute inset-0 opacity-20">
@@ -119,7 +129,11 @@ const HomePage: React.FC = () => {
               {Array.from({ length: 144 }).map((_, i) => (
                 <motion.div
                   key={i}
-                  className="border border-cyan-500/10"
+                  className={`border ${
+                    theme === 'light' 
+                      ? 'border-blue-500/10' 
+                      : 'border-cyan-500/10'
+                  }`}
                   animate={{
                     opacity: [0.1, 0.3, 0.1],
                   }}
@@ -137,7 +151,11 @@ const HomePage: React.FC = () => {
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+              className={`absolute w-1 h-1 rounded-full ${
+                theme === 'light' 
+                  ? 'bg-blue-500' 
+                  : 'bg-cyan-400'
+              }`}
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -178,10 +196,16 @@ const HomePage: React.FC = () => {
                 className="h-24 w-24 mb-6 filter drop-shadow-2xl"
               />
               <div className="text-center">
-                <h1 className="text-6xl md:text-8xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">
+                <h1 className={`text-6xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent mb-4 ${
+                  theme === 'light'
+                    ? 'bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600'
+                    : 'bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600'
+                }`}>
                   P³ Lending
                 </h1>
-                <p className="text-xl text-gray-400 font-light">
+                <p className={`text-xl font-light ${
+                  theme === 'light' ? 'text-gray-600' : 'text-gray-400'
+                }`}>
                   Peer-to-Peer = 2 + 1 for helping those in need
                 </p>
               </div>
@@ -192,10 +216,16 @@ const HomePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-7xl font-bold mb-12 leading-tight text-center"
+              className={`text-5xl md:text-7xl font-bold mb-12 leading-tight text-center ${
+                theme === 'light' ? 'text-gray-900' : 'text-white'
+              }`}
             >
               Meet your{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className={`bg-clip-text text-transparent ${
+                theme === 'light'
+                  ? 'bg-gradient-to-r from-blue-600 to-purple-600'
+                  : 'bg-gradient-to-r from-cyan-400 to-blue-500'
+              }`}>
                 decentralized
               </span>
               <br />
@@ -207,7 +237,9 @@ const HomePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xl md:text-2xl text-gray-300 mb-16 max-w-4xl mx-auto font-light leading-relaxed text-center"
+              className={`text-xl md:text-2xl mb-16 max-w-4xl mx-auto font-light leading-relaxed text-center ${
+                theme === 'light' ? 'text-gray-700' : 'text-gray-300'
+              }`}
             >
               Revolutionizing peer-to-peer finance through blockchain technology, 
               Bitcoin, and trust-based reputation systems. Join thousands building 
@@ -233,7 +265,11 @@ const HomePage: React.FC = () => {
                 <>
                   <Link
                     to="/register"
-                    className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:from-cyan-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
+                    className={`group inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+                      theme === 'light'
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-500 hover:to-purple-500 hover:shadow-blue-500/25'
+                        : 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-400 hover:to-blue-500 hover:shadow-cyan-500/25'
+                    }`}
                   >
                     <Rocket className="h-5 w-5 mr-3" />
                     <span>Start Lending</span>
@@ -241,7 +277,11 @@ const HomePage: React.FC = () => {
                   </Link>
                   <Link
                     to="/login"
-                    className="group inline-flex items-center justify-center px-8 py-4 border-2 border-cyan-400 text-cyan-400 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-105"
+                    className={`group inline-flex items-center justify-center px-8 py-4 border-2 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 ${
+                      theme === 'light'
+                        ? 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
+                        : 'border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black'
+                    }`}
                   >
                     <Target className="h-5 w-5 mr-3" />
                     <span>Request a Loan</span>
@@ -255,10 +295,18 @@ const HomePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
-              className="flex flex-col items-center justify-center space-y-4 text-gray-400"
+              className={`flex flex-col items-center justify-center space-y-4 ${
+                theme === 'light' ? 'text-gray-600' : 'text-gray-400'
+              }`}
             >
-              <button className="group flex items-center space-x-3 hover:text-white transition-colors">
-                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              <button className={`group flex items-center space-x-3 transition-colors ${
+                theme === 'light' ? 'hover:text-gray-900' : 'hover:text-white'
+              }`}>
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${
+                  theme === 'light'
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600'
+                    : 'bg-gradient-to-r from-cyan-500 to-blue-600'
+                }`}>
                   <Play className="h-5 w-5 text-white ml-1" />
                 </div>
                 <span className="font-medium">Watch Demo</span>
@@ -270,7 +318,11 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="relative z-10 py-32 bg-gradient-to-r from-gray-900 to-black">
+      <section className={`relative z-10 py-32 ${
+        theme === 'light'
+          ? 'bg-gradient-to-r from-gray-100 to-gray-200'
+          : 'bg-gradient-to-r from-gray-900 to-black'
+      }`}>
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -290,17 +342,29 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="text-center group"
                 >
-                  <div className="mb-8 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl inline-block group-hover:scale-110 transition-transform">
-                    <Icon className="h-8 w-8 text-cyan-400" />
+                  <div className={`mb-8 p-4 rounded-2xl inline-block group-hover:scale-110 transition-transform ${
+                    theme === 'light'
+                      ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10'
+                      : 'bg-gradient-to-r from-cyan-500/10 to-blue-500/10'
+                  }`}>
+                    <Icon className={`h-8 w-8 ${
+                      theme === 'light' ? 'text-blue-500' : 'text-cyan-400'
+                    }`} />
                   </div>
-                  <div className="text-4xl font-bold text-white mb-4 tracking-tight">
+                  <div className={`text-4xl font-bold mb-4 tracking-tight ${
+                    theme === 'light' ? 'text-gray-900' : 'text-white'
+                  }`}>
                     {isLoading ? (
-                      <div className="animate-pulse bg-gray-700 h-10 w-24 rounded mx-auto"></div>
+                      <div className={`animate-pulse h-10 w-24 rounded mx-auto ${
+                        theme === 'light' ? 'bg-gray-300' : 'bg-gray-700'
+                      }`}></div>
                     ) : (
                       stat.value
                     )}
                   </div>
-                  <div className="text-sm text-gray-400 font-medium tracking-wide uppercase">{stat.label}</div>
+                  <div className={`text-sm font-medium tracking-wide uppercase ${
+                    theme === 'light' ? 'text-gray-600' : 'text-gray-400'
+                  }`}>{stat.label}</div>
                 </motion.div>
               );
             })}
@@ -309,7 +373,9 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section className="relative z-10 py-40 bg-black">
+      <section className={`relative z-10 py-40 ${
+        theme === 'light' ? 'bg-white' : 'bg-black'
+      }`}>
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -318,13 +384,21 @@ const HomePage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-32"
           >
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-12 tracking-tight">
+            <h2 className={`text-5xl md:text-7xl font-bold mb-12 tracking-tight ${
+              theme === 'light' ? 'text-gray-900' : 'text-white'
+            }`}>
               Built for the{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className={`bg-clip-text text-transparent ${
+                theme === 'light'
+                  ? 'bg-gradient-to-r from-blue-600 to-purple-600'
+                  : 'bg-gradient-to-r from-cyan-400 to-blue-500'
+              }`}>
                 future
               </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className={`text-xl max-w-3xl mx-auto font-light leading-relaxed ${
+              theme === 'light' ? 'text-gray-700' : 'text-gray-300'
+            }`}>
               Every feature designed with precision, every interaction crafted for perfection. 
               Experience the next generation of decentralized finance.
             </p>
@@ -342,12 +416,26 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="group relative"
                 >
-                  <div className="bg-gradient-to-br from-gray-900 to-black p-10 rounded-2xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
-                    <div className="mb-8 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl inline-block group-hover:scale-110 transition-transform">
-                      <Icon className="h-8 w-8 text-cyan-400" />
+                  <div className={`p-10 rounded-2xl border transition-all duration-300 hover:shadow-2xl ${
+                    theme === 'light'
+                      ? 'bg-gradient-to-br from-gray-50 to-white border-gray-200 hover:border-blue-500/50 hover:shadow-blue-500/10'
+                      : 'bg-gradient-to-br from-gray-900 to-black border-gray-800 hover:border-cyan-500/50 hover:shadow-cyan-500/10'
+                  }`}>
+                    <div className={`mb-8 p-4 rounded-xl inline-block group-hover:scale-110 transition-transform ${
+                      theme === 'light'
+                        ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10'
+                        : 'bg-gradient-to-r from-cyan-500/10 to-blue-500/10'
+                    }`}>
+                      <Icon className={`h-8 w-8 ${
+                        theme === 'light' ? 'text-blue-500' : 'text-cyan-400'
+                      }`} />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">{feature.title}</h3>
-                    <p className="text-gray-300 leading-relaxed">{feature.description}</p>
+                    <h3 className={`text-2xl font-bold mb-6 tracking-tight ${
+                      theme === 'light' ? 'text-gray-900' : 'text-white'
+                    }`}>{feature.title}</h3>
+                    <p className={`leading-relaxed ${
+                      theme === 'light' ? 'text-gray-700' : 'text-gray-300'
+                    }`}>{feature.description}</p>
                   </div>
                 </motion.div>
               );

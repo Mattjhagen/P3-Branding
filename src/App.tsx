@@ -5,6 +5,7 @@ import { useAuthStore } from '@/store/authStore';
 import { useThemeStore } from '@/store/themeStore';
 import { authService } from '@/services/auth';
 import { web3Service } from '@/services/web3';
+import { ReownWeb3Provider } from '@/components/ReownWeb3Provider';
 
 // Layout components
 import Layout from '@/components/Layout';
@@ -42,7 +43,7 @@ const App: React.FC = () => {
   const initializeApp = async () => {
     try {
       // Load saved theme
-      const savedTheme = localStorage.getItem('p3-theme-mode') || 'dark';
+      const savedTheme = localStorage.getItem('p3-theme-mode') || 'light';
       setTheme(savedTheme as 'light' | 'dark');
 
       // Check authentication
@@ -137,11 +138,12 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      theme === 'light' ? 'bg-gray-50 text-gray-900' : 'bg-gray-900 text-white'
-    }`}>
-      <AnimatePresence mode="wait">
-        <Routes>
+    <ReownWeb3Provider>
+      <div className={`min-h-screen transition-colors duration-300 ${
+        theme === 'light' ? 'bg-gray-50 text-gray-900' : 'bg-gray-900 text-white'
+      }`}>
+        <AnimatePresence mode="wait">
+          <Routes>
           {/* Public routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={
@@ -218,9 +220,10 @@ const App: React.FC = () => {
 
           {/* 404 route */}
           <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </AnimatePresence>
-    </div>
+          </Routes>
+        </AnimatePresence>
+      </div>
+    </ReownWeb3Provider>
   );
 };
 
