@@ -40,13 +40,23 @@
     
     <!-- PWA manifest -->
     <link rel="manifest" href="/manifest.json">
-  <script type="module" crossorigin src="/assets/index-CRtsrZfo.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-DKGanPlE.js">
-  <link rel="modulepreload" crossorigin href="/assets/web3-D8p30D77.js">
-  <link rel="modulepreload" crossorigin href="/assets/ui-BWRRsdbR.js">
+  <script type="module" crossorigin src="/assets/index-Ddva7RnH.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-D7z7BunA.js">
+  <link rel="modulepreload" crossorigin href="/assets/web3-ldmcRN87.js">
+  <link rel="modulepreload" crossorigin href="/assets/ui-DBeT0WXz.js">
   <link rel="stylesheet" crossorigin href="/assets/index-3Jeo7xcU.css">
-<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+</head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
+    <script>
+      // Clear service worker cache
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            registration.unregister();
+          }
+        });
+      }
+    </script>
   </body>
 </html>

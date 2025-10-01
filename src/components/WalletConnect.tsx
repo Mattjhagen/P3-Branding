@@ -1,6 +1,5 @@
 import React from 'react'
 import { useReownWeb3 } from '@/services/reownWeb3'
-import { Button } from '@/components/ui/Button'
 import { Wallet, LogOut, Copy, ExternalLink } from 'lucide-react'
 import toast from 'react-hot-toast'
 
@@ -62,25 +61,25 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
 
   if (isConnecting) {
     return (
-      <Button
+      <button
         disabled
-        className={`${className} flex items-center space-x-2`}
+        className={`${className} flex items-center space-x-2 px-4 py-2 bg-gray-600 text-white rounded-lg cursor-not-allowed`}
       >
         <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
         <span>Connecting...</span>
-      </Button>
+      </button>
     )
   }
 
   if (!isConnected) {
     return (
-      <Button
+      <button
         onClick={handleConnect}
-        className={`${className} flex items-center space-x-2`}
+        className={`${className} flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors`}
       >
         <Wallet className="h-4 w-4" />
         <span>Connect Wallet</span>
-      </Button>
+      </button>
     )
   }
 
@@ -122,15 +121,13 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
       </div>
 
       {/* Disconnect Button */}
-      <Button
+      <button
         onClick={handleDisconnect}
-        variant="outline"
-        size="sm"
-        className="flex items-center space-x-1"
+        className="flex items-center space-x-1 px-3 py-1 border border-gray-600 text-gray-300 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
       >
         <LogOut className="h-4 w-4" />
         <span>Disconnect</span>
-      </Button>
+      </button>
     </div>
   )
 }
