@@ -20,6 +20,7 @@ import { apiService } from '@/services/api';
 import { PlatformMetrics } from '@/types';
 
 const HomePage: React.FC = () => {
+  // Cache bust: Apple redesign v2.0 - Force deployment
   const { isAuthenticated } = useAuthStore();
   const [metrics, setMetrics] = useState<PlatformMetrics | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -104,7 +105,7 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-900" style={{ backgroundColor: '#f9fafb' }}>
       {/* Hero Section - Apple-inspired minimalism */}
       <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800">
         {/* Subtle background pattern */}
