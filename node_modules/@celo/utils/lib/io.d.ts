@@ -1,0 +1,26 @@
+import * as t from 'io-ts';
+export { isValidUrl, URL_REGEX } from '@celo/base/lib/io';
+export declare const UrlType: t.Type<string, string, unknown>;
+export declare const JSONStringType: t.Type<string, string, unknown>;
+export declare const AddressType: t.Type<string, string, unknown>;
+export declare const PublicKeyType: t.Type<string, string, unknown>;
+export declare const SignatureType: t.StringC;
+export declare const SaltType: t.StringC;
+export declare type Signature = t.TypeOf<typeof SignatureType>;
+export declare type Address = t.TypeOf<typeof AddressType>;
+export declare const AttestationServiceStatusResponseType: t.TypeC<{
+    status: t.LiteralC<"ok">;
+    smsProviders: t.ArrayC<t.StringC>;
+    blacklistedRegionCodes: t.UnionC<[t.ArrayC<t.StringC>, t.UndefinedC]>;
+    accountAddress: t.Type<string, string, unknown>;
+    signature: t.UnionC<[t.StringC, t.UndefinedC]>;
+    version: t.StringC;
+    latestBlock: t.NumberC;
+    ageOfLatestBlock: t.NumberC;
+    isNodeSyncing: t.BooleanC;
+    appSignature: t.StringC;
+    smsProvidersRandomized: t.BooleanC;
+    maxDeliveryAttempts: t.NumberC;
+    maxRerequestMins: t.NumberC;
+    twilioVerifySidProvided: t.BooleanC;
+}>;

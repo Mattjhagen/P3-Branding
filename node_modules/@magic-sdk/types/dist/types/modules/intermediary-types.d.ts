@@ -1,0 +1,2 @@
+import { DeviceVerificationEventEmit, DeviceVerificationEventOnReceived, LoginWithEmailOTPEventEmit, LoginWithEmailOTPEventOnReceived, LoginWithMagicLinkEventEmit, LoginWithMagicLinkEventOnReceived } from './auth-types';
+export declare type IntermediaryEvents = `${LoginWithEmailOTPEventEmit}` | `${LoginWithEmailOTPEventOnReceived}` | `${LoginWithMagicLinkEventEmit}` | `${LoginWithMagicLinkEventOnReceived}` | `${DeviceVerificationEventEmit}` | `${DeviceVerificationEventOnReceived}`;

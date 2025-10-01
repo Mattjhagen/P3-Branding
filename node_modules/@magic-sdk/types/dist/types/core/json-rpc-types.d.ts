@@ -1,0 +1,103 @@
+import { RPCErrorCode } from './exception-types';
+export interface JsonRpcRequestPayload<TParams = any> {
+    jsonrpc: string;
+    id: string | number | null;
+    method: string;
+    params?: TParams;
+}
+export interface JsonRpcRequestCallback {
+    /** Callback executed upon JSON RPC response. */
+    (err: JsonRpcError | null, result?: JsonRpcResponsePayload | null): void;
+}
+export interface JsonRpcBatchRequestCallback {
+    /** Callback executed upon JSON RPC response. */
+    (err: JsonRpcError | null, result?: (JsonRpcResponsePayload | null)[] | null): void;
+}
+export interface JsonRpcError {
+    message: string;
+    code: RPCErrorCode;
+    data?: any;
+}
+export interface JsonRpcResponsePayload<ResultType = any> {
+    jsonrpc: string;
+    id: string | number | null;
+    result?: ResultType | null;
+    error?: JsonRpcError | null;
+}
+export interface UserInfo {
+    email?: string;
+}
+export interface WalletInfo {
+    walletType: 'magic' | 'metamask' | 'coinbase_wallet';
+}
+export interface RequestUserInfoScope {
+    scope?: {
+        email?: 'required' | 'optional';
+    };
+}
+export declare enum Wallets {
+    MetaMask = "metamask",
+    CoinbaseWallet = "coinbase_wallet"
+}
+export declare enum Events {
+    WalletSelected = "wallet_selected",
+    WalletConnected = "wallet_connected",
+    WalletRejected = "wallet_rejected"
+}
+export interface UserEnv {
+    env: {
+        isMetaMaskInstalled: boolean;
+        isCoinbaseWalletInstalled: boolean;
+    };
+}
+/**
+ * Enum of JSON RPC methods for interacting with the Magic SDK authentication
+ * relayer.
+ */
+export declare enum MagicPayloadMethod {
+    LoginWithSms = "magic_auth_login_with_sms",
+    LoginWithEmailOTP = "magic_auth_login_with_email_otp",
+    LoginWithMagicLink = "magic_auth_login_with_magic_link",
+    LoginWithCredential = "magic_auth_login_with_credential",
+    SetAuthorizationToken = "magic_auth_set_authorization_token",
+    GetIdToken = "magic_auth_get_id_token",
+    GenerateIdToken = "magic_auth_generate_id_token",
+    GetMetadata = "magic_auth_get_metadata",
+    IsLoggedIn = "magic_is_logged_in",
+    Logout = "magic_auth_logout",
+    UpdateEmail = "magic_auth_update_email",
+    UserSettings = "magic_auth_settings",
+    UserSettingsTestMode = "magic_auth_settings_testing_mode",
+    LoginWithSmsTestMode = "magic_auth_login_with_sms_testing_mode",
+    LoginWithEmailOTPTestMode = "magic_auth_login_with_email_otp_testing_mode",
+    LoginWithMagicLinkTestMode = "magic_login_with_magic_link_testing_mode",
+    LoginWithCredentialTestMode = "magic_auth_login_with_credential_testing_mode",
+    GetIdTokenTestMode = "magic_auth_get_id_token_testing_mode",
+    GenerateIdTokenTestMode = "magic_auth_generate_id_token_testing_mode",
+    GetMetadataTestMode = "magic_auth_get_metadata_testing_mode",
+    IsLoggedInTestMode = "magic_auth_is_logged_in_testing_mode",
+    LogoutTestMode = "magic_auth_logout_testing_mode",
+    UpdateEmailTestMode = "magic_auth_update_email_testing_mode",
+    IntermediaryEvent = "magic_intermediary_event",
+    RequestAccounts = "eth_requestAccounts",
+    GetInfo = "magic_get_info",
+    ShowUI = "magic_wallet",
+    NFTPurchase = "magic_nft_purchase",
+    NFTCheckout = "magic_nft_checkout",
+    NFTTransfer = "magic_nft_transfer",
+    RequestUserInfoWithUI = "mc_request_user_info",
+    Disconnect = "mc_disconnect",
+    RecoverAccount = "magic_auth_recover_account",
+    RecoverAccountTestMode = "magic_auth_recover_account_testing_mode",
+    MagicBoxHeartBeat = "magic_box_heart_beat",
+    AutoConnect = "mc_auto_connect",
+    Login = "mc_login",
+    EncryptV1 = "magic_auth_encrypt_v1",
+    DecryptV1 = "magic_auth_decrypt_v1",
+    ShowNFTs = "magic_show_nfts",
+    ShowOnRamp = "magic_show_fiat_onramp",
+    ShowSendTokensUI = "magic_show_send_tokens_ui",
+    ShowAddress = "magic_show_address",
+    ShowBalances = "magic_show_balances",
+    SendGaslessTransaction = "eth_sendGaslessTransaction"
+}

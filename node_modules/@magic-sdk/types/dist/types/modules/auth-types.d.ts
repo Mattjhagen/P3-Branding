@@ -1,0 +1,119 @@
+export interface LoginWithMagicLinkConfiguration {
+    /**
+     * The email address of the user attempting to login.
+     */
+    email: string;
+    /**
+     * When `true`, a pre-built modal interface will show to the user, directing
+     * them to check their email for the "magic link" to complete their
+     * authentication.
+     */
+    showUI?: boolean;
+    /**
+     * You can optionally provide a redirect URI that will be followed at the end
+     * of the magic link flow. Don't forget to invoke
+     * `magic.auth.loginWithCredential()` to complete the login from the route you
+     * configure here.
+     */
+    redirectURI?: string;
+    /**
+     * Enterprise users with a custom SMTP can create custom email templates
+     * from their dashboard. The default Magic loginWithMagicLink email will be
+     * overriden when a variation is passed here.
+     */
+    overrides?: {
+        variation?: string;
+    };
+}
+export interface LoginWithSmsConfiguration {
+    /**
+     * Specify the phone number of the user attempting to login.
+     */
+    phoneNumber: string;
+}
+export interface LoginWithEmailOTPConfiguration {
+    /**
+     * Specify the email address of the user attempting to login.
+     */
+    email: string;
+    /**
+     * When `true`, a pre-built modal interface will show to the user, directing
+     * them to check their email for the one time passcode (OTP) to complete their
+     * authentication.
+     *
+     * When `false`, developers will be able to implement their own custom UI to
+     * continue the email OTP flow.
+     */
+    showUI?: boolean;
+    /**
+     * Device Unrecognized UI will enforce showing up to secure user's login
+     *
+     * When set to true (default), an improved device recognition UI will be displayed to the user,
+     * prompting them to verify their login by checking their email for device approval. This feature
+     * enhances authentication security.
+     *
+     * This param will only be affect if showUI is false. When set to false,
+     * developers have the flexibility to implement their own customized UI to
+     * handle device check events, providing a more tailored user experience.
+     */
+    deviceCheckUI?: boolean;
+    /**
+     * Enterprise users with a custom SMTP can create custom email templates
+     * from their dashboard. The default Magic loginWithOTP email will be
+     * overriden when a variation is passed here.
+     */
+    overrides?: {
+        variation?: string;
+    };
+}
+/**
+ * EventHandlers
+ */
+export declare type LoginWithMagicLinkEventHandlers = {
+    [LoginWithMagicLinkEventOnReceived.EmailSent]: () => void;
+    [LoginWithMagicLinkEventOnReceived.EmailNotDeliverable]: () => void;
+    [LoginWithMagicLinkEventEmit.Retry]: () => void;
+} & DeviceVerificationEventHandlers;
+export declare type LoginWithEmailOTPEventHandlers = {
+    [LoginWithEmailOTPEventOnReceived.EmailOTPSent]: () => void;
+    [LoginWithEmailOTPEventOnReceived.InvalidEmailOtp]: () => void;
+    [LoginWithEmailOTPEventOnReceived.ExpiredEmailOtp]: () => void;
+    [LoginWithEmailOTPEventEmit.VerifyEmailOtp]: (otp: string) => void;
+    [LoginWithEmailOTPEventEmit.Cancel]: () => void;
+} & DeviceVerificationEventHandlers;
+declare type DeviceVerificationEventHandlers = {
+    [DeviceVerificationEventOnReceived.DeviceNeedsApproval]: () => void;
+    [DeviceVerificationEventOnReceived.DeviceVerificationEmailSent]: () => void;
+    [DeviceVerificationEventOnReceived.DeviceVerificationLinkExpired]: () => void;
+    [DeviceVerificationEventOnReceived.DeviceApproved]: () => void;
+    [DeviceVerificationEventEmit.Retry]: () => void;
+};
+/**
+ * Auth Events Enum
+ */
+export declare enum LoginWithMagicLinkEventEmit {
+    Retry = "retry"
+}
+export declare enum LoginWithMagicLinkEventOnReceived {
+    EmailSent = "email-sent",
+    EmailNotDeliverable = "email-not-deliverable"
+}
+export declare enum LoginWithEmailOTPEventEmit {
+    VerifyEmailOtp = "verify-email-otp",
+    Cancel = "cancel"
+}
+export declare enum LoginWithEmailOTPEventOnReceived {
+    EmailOTPSent = "email-otp-sent",
+    InvalidEmailOtp = "invalid-email-otp",
+    ExpiredEmailOtp = "expired-email-otp"
+}
+export declare enum DeviceVerificationEventEmit {
+    Retry = "device-retry"
+}
+export declare enum DeviceVerificationEventOnReceived {
+    DeviceApproved = "device-approved",
+    DeviceNeedsApproval = "device-needs-approval",
+    DeviceVerificationLinkExpired = "device-verification-link-expired",
+    DeviceVerificationEmailSent = "device-verification-email-sent"
+}
+export {};

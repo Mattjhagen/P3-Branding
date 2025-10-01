@@ -26,6 +26,7 @@ import OAuthCallback from '@/pages/OAuthCallback';
 import HelpPage from '@/pages/HelpPage';
 import ContactPage from '@/pages/ContactPage';
 import ForgotPasswordPage from '@/pages/ForgotPasswordPage';
+import SmartWalletPage from '@/pages/SmartWalletPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 // Loading component
@@ -160,6 +161,7 @@ const App: React.FC = () => {
           <Route path="/help" element={<HelpPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/smart-wallet" element={<SmartWalletPage />} />
 
           {/* Protected routes */}
           <Route path="/dashboard" element={

@@ -23,6 +23,7 @@ import { authService } from '@/services/auth';
 import { web3Service } from '@/services/web3';
 import { formatAddress } from '@/services/web3';
 import { WalletConnect } from '@/components/WalletConnect';
+import { SmartWalletConnect } from '@/components/SmartWalletConnect';
 import toast from 'react-hot-toast';
 
 const Layout: React.FC = () => {
@@ -70,6 +71,7 @@ const Layout: React.FC = () => {
     { name: 'Lend', href: '/lend', icon: DollarSign },
     { name: 'Borrow', href: '/borrow', icon: Users },
     { name: 'Reputation', href: '/reputation', icon: Shield },
+    { name: 'Smart Wallet', href: '/smart-wallet', icon: Wallet },
     { name: 'KYC', href: '/kyc', icon: FileText },
     { name: 'Profile', href: '/profile', icon: User },
   ];
@@ -144,12 +146,19 @@ const Layout: React.FC = () => {
                 <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></span>
               </button>
 
-              {/* Wallet connection */}
-              <WalletConnect 
-                className="flex items-center space-x-2"
-                showBalance={true}
-                showNetwork={true}
-              />
+                          {/* Wallet connection */}
+                          <div className="flex items-center space-x-2">
+                            <WalletConnect 
+                              className="flex items-center space-x-2"
+                              showBalance={true}
+                              showNetwork={true}
+                            />
+                            <SmartWalletConnect 
+                              className="flex items-center space-x-2"
+                              showBalance={true}
+                              showNetwork={true}
+                            />
+                          </div>
 
               {/* Mobile menu button */}
               <button

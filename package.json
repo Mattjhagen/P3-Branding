@@ -25,6 +25,10 @@
   "author": "P3 Lending Team",
   "license": "MIT",
   "dependencies": {
+    "@alchemy/aa-accounts": "^3.19.0",
+    "@alchemy/aa-alchemy": "^3.19.0",
+    "@alchemy/aa-core": "^3.19.0",
+    "@alchemy/aa-signers": "^3.19.0",
     "@headlessui/react": "^1.7.17",
     "@reown/appkit": "^1.8.8",
     "@reown/appkit-adapter-wagmi": "^1.8.8",
