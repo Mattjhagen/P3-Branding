@@ -49,13 +49,29 @@
   <body>
     <div id="root"></div>
     <script>
-      // Clear service worker cache
+      // Aggressive cache clearing
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(function(registrations) {
           for(let registration of registrations) {
             registration.unregister();
           }
         });
+      }
+      
+      // Clear all caches
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          for (let name of names) {
+            caches.delete(name);
+          }
+        });
+      }
+      
+      // Force reload with cache bypass
+      if (window.location.search.indexOf('cache-bust') === -1) {
+        const url = new URL(window.location);
+        url.searchParams.set('cache-bust', Date.now());
+        window.location.replace(url.toString());
       }
     </script>
   </body>
