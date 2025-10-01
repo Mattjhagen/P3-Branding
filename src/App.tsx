@@ -22,6 +22,8 @@ import KYCPage from '@/pages/KYCPage';
 import ProfilePage from '@/pages/ProfilePage';
 import AdminPage from '@/pages/AdminPage';
 import OAuthCallback from '@/pages/OAuthCallback';
+import HelpPage from '@/pages/HelpPage';
+import ContactPage from '@/pages/ContactPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 // Loading component
@@ -150,6 +152,10 @@ const App: React.FC = () => {
 
           {/* OAuth callback routes */}
           <Route path="/auth/callback/:provider" element={<OAuthCallback />} />
+
+          {/* Public support pages */}
+          <Route path="/help" element={<HelpPage />} />
+          <Route path="/contact" element={<ContactPage />} />
 
           {/* Protected routes */}
           <Route path="/dashboard" element={
