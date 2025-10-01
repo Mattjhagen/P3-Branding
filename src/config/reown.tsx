@@ -44,6 +44,8 @@ export const appKit = projectId ? createAppKit({
     socials: ['google', 'x', 'github', 'discord'],
     emailShowWallets: true,
   },
+  // Push notifications configuration
+  enablePushNotifications: true,
   themeMode: 'light',
   themeVariables: {
     '--w3m-color-mix': '#667eea',
