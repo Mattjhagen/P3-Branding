@@ -181,13 +181,13 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="group"
                 >
-                  <div className="card card-hover h-full flex flex-col items-center justify-center text-center p-6 space-y-4">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary-500/10 group-hover:bg-primary-500/20 transition-colors">
+                  <div className="card card-hover h-full p-6" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '1rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '4rem', height: '4rem', borderRadius: '50%', backgroundColor: 'rgba(102, 126, 234, 0.1)', transition: 'background-color 0.3s' }}>
                       <Icon className="h-8 w-8 text-primary-400" />
                     </div>
                     <div className="text-3xl font-bold text-white group-hover:text-primary-300 transition-colors">
                       {isLoading ? (
-                        <div className="animate-pulse bg-gray-700 h-8 w-20 rounded mx-auto"></div>
+                        <div className="animate-pulse bg-gray-700 h-8 w-20 rounded" style={{ margin: '0 auto' }}></div>
                       ) : (
                         stat.value
                       )}
@@ -231,8 +231,8 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="group"
                 >
-                  <div className="card card-hover h-full flex flex-col p-6 space-y-4">
-                    <div className={`h-16 w-16 rounded-xl bg-gray-800 flex items-center justify-center group-hover:scale-110 transition-transform ${feature.color}`}>
+                  <div className="card card-hover h-full p-6" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <div className={`h-16 w-16 rounded-xl bg-gray-800 group-hover:scale-110 transition-transform ${feature.color}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Icon className="h-8 w-8" />
                     </div>
                     <h3 className="text-xl font-semibold group-hover:text-primary-300 transition-colors">{feature.title}</h3>
