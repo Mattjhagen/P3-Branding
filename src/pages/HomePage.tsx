@@ -181,13 +181,13 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="group"
                 >
-                  <div className="card card-hover h-full flex flex-col items-center justify-center text-center p-6">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary-500/10 mb-4 group-hover:bg-primary-500/20 transition-colors">
+                  <div className="card card-hover h-full flex flex-col items-center justify-center text-center p-6 space-y-4">
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary-500/10 group-hover:bg-primary-500/20 transition-colors">
                       <Icon className="h-8 w-8 text-primary-400" />
                     </div>
-                    <div className="text-3xl font-bold text-white mb-2 group-hover:text-primary-300 transition-colors">
+                    <div className="text-3xl font-bold text-white group-hover:text-primary-300 transition-colors">
                       {isLoading ? (
-                        <div className="animate-pulse bg-gray-700 h-8 w-20 rounded"></div>
+                        <div className="animate-pulse bg-gray-700 h-8 w-20 rounded mx-auto"></div>
                       ) : (
                         stat.value
                       )}
@@ -231,11 +231,11 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="group"
                 >
-                  <div className="card card-hover h-full flex flex-col">
-                    <div className={`h-16 w-16 rounded-xl bg-gray-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform ${feature.color}`}>
+                  <div className="card card-hover h-full flex flex-col p-6 space-y-4">
+                    <div className={`h-16 w-16 rounded-xl bg-gray-800 flex items-center justify-center group-hover:scale-110 transition-transform ${feature.color}`}>
                       <Icon className="h-8 w-8" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-4 group-hover:text-primary-300 transition-colors">{feature.title}</h3>
+                    <h3 className="text-xl font-semibold group-hover:text-primary-300 transition-colors">{feature.title}</h3>
                     <p className="text-gray-400 leading-relaxed flex-grow">{feature.description}</p>
                   </div>
                 </motion.div>
