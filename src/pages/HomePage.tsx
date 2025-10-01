@@ -13,7 +13,15 @@ import {
   Star,
   Bitcoin,
   Lock,
-  Eye
+  Eye,
+  Play,
+  Sparkles,
+  Target,
+  Award,
+  Rocket,
+  Heart,
+  Infinity,
+  Handshake
 } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
 import { apiService } from '@/services/api';
@@ -105,73 +113,175 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white" style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
-      {/* Hero Section - Steve Jobs Era Minimalism */}
-      <section className="relative bg-white">
-        <div className="max-w-4xl mx-auto px-8 py-24 md:py-32">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
+        <div className="absolute inset-0">
+          {/* Animated grid pattern */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="grid grid-cols-12 gap-4 h-full">
+              {Array.from({ length: 144 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="border border-cyan-500/10"
+                  animate={{
+                    opacity: [0.1, 0.3, 0.1],
+                  }}
+                  transition={{
+                    duration: 3 + Math.random() * 2,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          
+          {/* Floating particles */}
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0.3, 1, 0.3],
+              }}
+              transition={{
+                duration: 2 + Math.random() * 3,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative z-10 min-h-screen flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-8 py-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center"
           >
-            <div className="flex items-center justify-center mb-8">
+            {/* Logo and Brand */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex items-center justify-center mb-12"
+            >
               <img 
                 src="/logo-p3.svg" 
                 alt="P³ Lending" 
-                className="h-20 w-20 mr-6"
+                className="h-24 w-24 mr-6 filter drop-shadow-2xl"
               />
-              <h1 className="text-7xl md:text-9xl font-thin tracking-tighter text-gray-900">
-                P³ Lending
-              </h1>
-            </div>
-            <p className="text-2xl md:text-3xl text-gray-600 mb-16 max-w-2xl mx-auto font-light leading-relaxed">
-              The future of finance is{' '}
-              <span className="text-gray-900 font-normal">decentralized</span>,{' '}
-              <span className="text-gray-900 font-normal">transparent</span>, and{' '}
-              <span className="text-gray-900 font-normal">accessible</span> to everyone
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="text-left">
+                <h1 className="text-6xl md:text-8xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                  P³ Lending
+                </h1>
+                <p className="text-xl text-gray-400 font-light">
+                  Peer-to-Peer = 2 + 1 for helping those in need
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
+            >
+              Meet your{' '}
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                decentralized
+              </span>
+              <br />
+              lending ecosystem
+            </motion.h2>
+
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto font-light leading-relaxed"
+            >
+              Revolutionizing peer-to-peer finance through blockchain technology, 
+              Bitcoin, and trust-based reputation systems. Join thousands building 
+              the future of accessible credit.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+            >
               {isAuthenticated ? (
                 <Link
                   to="/dashboard"
-                  className="inline-flex items-center justify-center px-12 py-4 bg-gray-900 text-white rounded-none font-light text-lg transition-all duration-300 hover:bg-gray-800 hover:scale-105"
+                  className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:from-cyan-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
                 >
                   <span>Go to Dashboard</span>
-                  <ArrowRight className="h-5 w-5 ml-3" />
+                  <ArrowRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
               ) : (
                 <>
                   <Link
                     to="/register"
-                    className="inline-flex items-center justify-center px-12 py-4 bg-gray-900 text-white rounded-none font-light text-lg transition-all duration-300 hover:bg-gray-800 hover:scale-105"
+                    className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:from-cyan-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
                   >
+                    <Rocket className="h-5 w-5 mr-3" />
                     <span>Start Lending</span>
-                    <ArrowRight className="h-5 w-5 ml-3" />
+                    <ArrowRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     to="/login"
-                    className="inline-flex items-center justify-center px-12 py-4 border-2 border-gray-900 text-gray-900 rounded-none font-light text-lg transition-all duration-300 hover:bg-gray-900 hover:text-white"
+                    className="group inline-flex items-center justify-center px-8 py-4 border-2 border-cyan-400 text-cyan-400 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-105"
                   >
-                    Request a Loan
+                    <Target className="h-5 w-5 mr-3" />
+                    <span>Request a Loan</span>
                   </Link>
                 </>
               )}
-            </div>
+            </motion.div>
+
+            {/* Demo Video Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+              className="flex items-center justify-center space-x-4 text-gray-400"
+            >
+              <button className="group flex items-center space-x-3 hover:text-white transition-colors">
+                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Play className="h-5 w-5 text-white ml-1" />
+                </div>
+                <span className="font-medium">Watch Demo</span>
+              </button>
+              <span className="text-sm">See how P³ Lending works</span>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section - Steve Jobs Era Clean */}
-      <section className="py-32 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-8">
+      {/* Stats Section */}
+      <section className="relative z-10 py-24 bg-gradient-to-r from-gray-900 to-black">
+        <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-12"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -182,19 +292,19 @@ const HomePage: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="text-center"
+                  className="text-center group"
                 >
-                  <div className="mb-6">
-                    <Icon className="h-8 w-8 mx-auto text-gray-400" />
+                  <div className="mb-6 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl inline-block group-hover:scale-110 transition-transform">
+                    <Icon className="h-8 w-8 text-cyan-400" />
                   </div>
-                  <div className="text-4xl font-thin text-gray-900 mb-2 tracking-tight">
+                  <div className="text-4xl font-bold text-white mb-2 tracking-tight">
                     {isLoading ? (
-                      <div className="animate-pulse bg-gray-300 h-10 w-24 rounded mx-auto"></div>
+                      <div className="animate-pulse bg-gray-700 h-10 w-24 rounded mx-auto"></div>
                     ) : (
                       stat.value
                     )}
                   </div>
-                  <div className="text-sm text-gray-500 font-light tracking-wide uppercase">{stat.label}</div>
+                  <div className="text-sm text-gray-400 font-medium tracking-wide uppercase">{stat.label}</div>
                 </motion.div>
               );
             })}
@@ -202,9 +312,9 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Features Section - Steve Jobs Era Elegance */}
-      <section className="py-32 bg-white">
-        <div className="max-w-6xl mx-auto px-8">
+      {/* Features Section */}
+      <section className="relative z-10 py-32 bg-black">
+        <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -212,15 +322,19 @@ const HomePage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-24"
           >
-            <h2 className="text-5xl md:text-6xl font-thin text-gray-900 mb-8 tracking-tight">
-              Built for the future
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+              Built for the{' '}
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                future
+              </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
-              Every feature designed with precision, every interaction crafted for perfection
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+              Every feature designed with precision, every interaction crafted for perfection. 
+              Experience the next generation of decentralized finance.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -230,13 +344,15 @@ const HomePage: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="text-center"
+                  className="group relative"
                 >
-                  <div className="mb-8">
-                    <Icon className="h-12 w-12 mx-auto text-gray-400" />
+                  <div className="bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
+                    <div className="mb-6 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl inline-block group-hover:scale-110 transition-transform">
+                      <Icon className="h-8 w-8 text-cyan-400" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{feature.title}</h3>
+                    <p className="text-gray-300 leading-relaxed">{feature.description}</p>
                   </div>
-                  <h3 className="text-2xl font-light text-gray-900 mb-6 tracking-tight">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed font-light text-lg">{feature.description}</p>
                 </motion.div>
               );
             })}
@@ -244,36 +360,116 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section - Steve Jobs Era Bold */}
-      <section className="py-32 bg-gray-900">
-        <div className="max-w-4xl mx-auto px-8 text-center">
+      {/* How It Works Section */}
+      <section className="relative z-10 py-32 bg-gradient-to-br from-gray-900 to-black">
+        <div className="max-w-7xl mx-auto px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-24"
+          >
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+              How it{' '}
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                works
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+              Simple, secure, and transparent. Get started in minutes with our revolutionary platform.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                step: "01",
+                title: "Connect & Verify",
+                description: "Link your wallet, complete KYC, and build your reputation score through our transparent system.",
+                icon: Shield,
+                color: "from-cyan-500 to-blue-500"
+              },
+              {
+                step: "02", 
+                title: "Lend or Borrow",
+                description: "Browse opportunities, set your terms, and let smart contracts handle the rest automatically.",
+                icon: Handshake,
+                color: "from-blue-500 to-purple-500"
+              },
+              {
+                step: "03",
+                title: "Grow & Earn",
+                description: "Watch your reputation grow, earn competitive returns, and access better rates over time.",
+                icon: TrendingUp,
+                color: "from-purple-500 to-pink-500"
+              }
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-center group"
+                >
+                  <div className="relative mb-8">
+                    <div className={`w-24 h-24 mx-auto bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4 group-hover:scale-110 transition-transform`}>
+                      {item.step}
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full flex items-center justify-center">
+                      <Icon className="h-8 w-8 text-cyan-400" />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative z-10 py-32 bg-black">
+        <div className="max-w-6xl mx-auto px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-thin text-white mb-8 tracking-tight">
-              Ready to begin?
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+              Ready to{' '}
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                revolutionize
+              </span>
+              <br />
+              your finances?
             </h2>
-            <p className="text-xl text-gray-300 mb-16 font-light leading-relaxed max-w-2xl mx-auto">
-              Join thousands of users who are already building the future of finance
+            <p className="text-xl text-gray-300 mb-16 font-light leading-relaxed max-w-3xl mx-auto">
+              Join thousands of users who are already building the future of finance. 
+              Start your journey with P³ Lending today.
             </p>
             
             {!isAuthenticated && (
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link
                   to="/register"
-                  className="inline-flex items-center justify-center px-12 py-4 bg-white text-gray-900 rounded-none font-light text-lg transition-all duration-300 hover:bg-gray-100 hover:scale-105"
+                  className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:from-cyan-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
                 >
-                  <span>Get Started</span>
-                  <ArrowRight className="h-5 w-5 ml-3" />
+                  <Rocket className="h-5 w-5 mr-3" />
+                  <span>Get Started Free</span>
+                  <ArrowRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   to="/login"
-                  className="inline-flex items-center justify-center px-12 py-4 border-2 border-white text-white rounded-none font-light text-lg transition-all duration-300 hover:bg-white hover:text-gray-900"
+                  className="group inline-flex items-center justify-center px-8 py-4 border-2 border-cyan-400 text-cyan-400 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-105"
                 >
-                  Request a Loan
+                  <Target className="h-5 w-5 mr-3" />
+                  <span>Request a Loan</span>
                 </Link>
               </div>
             )}
@@ -281,9 +477,9 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Trust Indicators - Steve Jobs Era Minimal */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-8">
+      {/* Trust Indicators */}
+      <section className="relative z-10 py-24 bg-gradient-to-r from-gray-900 to-black">
+        <div className="max-w-6xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -291,26 +487,85 @@ const HomePage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-              <div className="flex flex-col items-center space-y-4">
-                <CheckCircle className="h-8 w-8 text-gray-400" />
-                <span className="text-gray-900 font-light text-lg">Fully Audited</span>
-                <span className="text-gray-500 text-sm font-light tracking-wide uppercase">Smart Contracts</span>
+            <h3 className="text-3xl font-bold text-white mb-16">
+              Trusted by thousands worldwide
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              <div className="flex flex-col items-center space-y-4 group">
+                <div className="p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl group-hover:scale-110 transition-transform">
+                  <CheckCircle className="h-12 w-12 text-cyan-400" />
+                </div>
+                <span className="text-white font-bold text-xl">Fully Audited</span>
+                <span className="text-gray-400 text-sm font-medium tracking-wide uppercase">Smart Contracts</span>
               </div>
-              <div className="flex flex-col items-center space-y-4">
-                <Shield className="h-8 w-8 text-gray-400" />
-                <span className="text-gray-900 font-light text-lg">Bank-Grade</span>
-                <span className="text-gray-500 text-sm font-light tracking-wide uppercase">Security</span>
+              <div className="flex flex-col items-center space-y-4 group">
+                <div className="p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl group-hover:scale-110 transition-transform">
+                  <Shield className="h-12 w-12 text-cyan-400" />
+                </div>
+                <span className="text-white font-bold text-xl">Bank-Grade</span>
+                <span className="text-gray-400 text-sm font-medium tracking-wide uppercase">Security</span>
               </div>
-              <div className="flex flex-col items-center space-y-4">
-                <Globe className="h-8 w-8 text-gray-400" />
-                <span className="text-gray-900 font-light text-lg">Global</span>
-                <span className="text-gray-500 text-sm font-light tracking-wide uppercase">Accessibility</span>
+              <div className="flex flex-col items-center space-y-4 group">
+                <div className="p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl group-hover:scale-110 transition-transform">
+                  <Globe className="h-12 w-12 text-cyan-400" />
+                </div>
+                <span className="text-white font-bold text-xl">Global</span>
+                <span className="text-gray-400 text-sm font-medium tracking-wide uppercase">Accessibility</span>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 bg-black border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center space-x-3 mb-6">
+                <img 
+                  src="/logo-p3.svg" 
+                  alt="P³ Lending" 
+                  className="h-10 w-10"
+                />
+                <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  P³ Lending
+                </span>
+              </div>
+              <p className="text-gray-400 text-sm max-w-md leading-relaxed">
+                Revolutionizing peer-to-peer finance through blockchain technology, 
+                Bitcoin, and trust-based reputation systems. Building the future of accessible credit.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Platform</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/lend" className="text-gray-400 hover:text-cyan-400 transition-colors">Lend</Link></li>
+                <li><Link to="/borrow" className="text-gray-400 hover:text-cyan-400 transition-colors">Borrow</Link></li>
+                <li><Link to="/reputation" className="text-gray-400 hover:text-cyan-400 transition-colors">Reputation</Link></li>
+                <li><Link to="/kyc" className="text-gray-400 hover:text-cyan-400 transition-colors">KYC</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Support</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/help" className="text-gray-400 hover:text-cyan-400 transition-colors">Help Center</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-cyan-400 transition-colors">Contact Us</Link></li>
+                <li><Link to="/terms-of-service.html" className="text-gray-400 hover:text-cyan-400 transition-colors">Terms of Service</Link></li>
+                <li><Link to="/privacy-policy.html" className="text-gray-400 hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+            <p className="text-gray-400 text-sm">
+              © 2024 P³ Lending. All rights reserved. Built with ❤️ for the decentralized future.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
