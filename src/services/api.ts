@@ -13,7 +13,7 @@ import {
 } from '@/types';
 
 // API configuration
-const API_BASE_URL = process.env.VITE_API_BASE_URL || 'https://api.p3lending.com';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.p3lending.com';
 const API_VERSION = 'v1';
 
 // Mock data for development when backend is unavailable
@@ -378,7 +378,7 @@ export class APIService {
 
   // WebSocket connection for real-time updates
   connectWebSocket(): WebSocket {
-    const wsUrl = process.env.VITE_WS_URL || 'wss://api.p3lending.com/ws';
+    const wsUrl = import.meta.env.VITE_WS_URL || 'wss://api.p3lending.com/ws';
     const token = localStorage.getItem('auth_token');
     const ws = new WebSocket(`${wsUrl}?token=${token}`);
     

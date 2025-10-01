@@ -42,36 +42,36 @@ export class AuthService {
     // Initialize OAuth providers
     this.oauthProviders.set('google', {
       name: 'Google',
-      clientId: process.env.VITE_GOOGLE_CLIENT_ID || '',
+      clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || '',
       redirectUri: `${window.location.origin}/auth/callback/google`,
       scope: 'openid email profile'
     });
 
     this.oauthProviders.set('github', {
       name: 'GitHub',
-      clientId: process.env.VITE_GITHUB_CLIENT_ID || '',
+      clientId: import.meta.env.VITE_GITHUB_CLIENT_ID || '',
       redirectUri: `${window.location.origin}/auth/callback/github`,
       scope: 'user:email'
     });
 
     this.oauthProviders.set('discord', {
       name: 'Discord',
-      clientId: process.env.VITE_DISCORD_CLIENT_ID || '',
+      clientId: import.meta.env.VITE_DISCORD_CLIENT_ID || '',
       redirectUri: `${window.location.origin}/auth/callback/discord`,
       scope: 'identify email'
     });
 
     // Initialize Stripe
     this.stripeConfig = {
-      publishableKey: process.env.VITE_STRIPE_PUBLISHABLE_KEY || '',
-      secretKey: process.env.VITE_STRIPE_SECRET_KEY || ''
+      publishableKey: import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '',
+      secretKey: import.meta.env.VITE_STRIPE_SECRET_KEY || ''
     };
 
     // Initialize Plaid
     this.plaidConfig = {
-      clientId: process.env.VITE_PLAID_CLIENT_ID || '',
-      secret: process.env.VITE_PLAID_SECRET || '',
-      environment: (process.env.VITE_PLAID_ENVIRONMENT as any) || 'sandbox',
+      clientId: import.meta.env.VITE_PLAID_CLIENT_ID || '',
+      secret: import.meta.env.VITE_PLAID_SECRET || '',
+      environment: (import.meta.env.VITE_PLAID_ENVIRONMENT as any) || 'sandbox',
       products: ['transactions', 'auth', 'identity'],
       countryCodes: ['US', 'CA']
     };
