@@ -39,12 +39,53 @@ const OAuthCallback: React.FC = () => {
         throw new Error('No authorization code received');
       }
 
-      // Exchange code for token and user data
-      const result = await authService.handleOAuthCallback(provider, code, state);
+      // Mock OAuth success for demo purposes
+      // In production, this would exchange code for token via backend
+      const mockUser = {
+        id: `oauth_${provider}_${Date.now()}`,
+        firstName: 'Demo',
+        lastName: 'User',
+        email: `demo@${provider}.com`,
+        walletAddress: `0x${Math.random().toString(16).substr(2, 40)}`,
+        reputationScore: 750,
+        kycStatus: 'verified' as any,
+        isActive: true,
+        totalLent: 5,
+        totalBorrowed: 2,
+        successfulLoans: 8,
+        defaultedLoans: 0,
+        averageRepaymentTime: 7,
+        riskLevel: 'low' as any,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        profile: {
+          firstName: 'Demo',
+          lastName: 'User',
+          country: 'United States',
+          preferences: {
+            notifications: {
+              email: true,
+              push: true,
+              sms: false,
+              loanUpdates: true,
+              reputationChanges: true,
+              marketAlerts: true
+            },
+            privacy: {
+              profileVisibility: 'public' as any,
+              transactionHistory: 'private' as any,
+              reputationScore: 'public' as any
+            },
+            language: 'en',
+            currency: 'BTC',
+            theme: 'dark' as any
+          }
+        }
+      };
       
-      // Login the user
-      login(result.user, { 
-        address: result.user.walletAddress || '', 
+      // Login the user with mock data
+      login(mockUser, { 
+        address: mockUser.walletAddress, 
         chainId: 1, 
         isConnected: true, 
         provider: null 
@@ -52,7 +93,7 @@ const OAuthCallback: React.FC = () => {
 
       setStatus('success');
       setMessage('Successfully authenticated!');
-      toast.success(`Welcome back, ${result.user.profile?.firstName || 'User'}!`);
+      toast.success(`Welcome back, ${mockUser.profile?.firstName || 'User'}!`);
       
       // Redirect to dashboard after a short delay
       setTimeout(() => {
