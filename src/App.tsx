@@ -24,6 +24,7 @@ import AdminPage from '@/pages/AdminPage';
 import OAuthCallback from '@/pages/OAuthCallback';
 import HelpPage from '@/pages/HelpPage';
 import ContactPage from '@/pages/ContactPage';
+import ForgotPasswordPage from '@/pages/ForgotPasswordPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 // Loading component
@@ -156,6 +157,7 @@ const App: React.FC = () => {
           {/* Public support pages */}
           <Route path="/help" element={<HelpPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
           {/* Protected routes */}
           <Route path="/dashboard" element={

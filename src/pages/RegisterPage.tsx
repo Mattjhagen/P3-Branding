@@ -100,7 +100,25 @@ const RegisterPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const { user, token } = await authService.register({
+      // Mock registration for demo purposes
+      // In production, this would call the backend API
+      const mockUser = {
+        id: `email_${Date.now()}`,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        walletAddress: `0x${Math.random().toString(16).substr(2, 40)}`,
+        reputationScore: 100,
+        kycStatus: 'not_started' as any,
+        isActive: true,
+        totalLent: 0,
+        totalBorrowed: 0,
+        successfulLoans: 0,
+        defaultedLoans: 0,
+        averageRepaymentTime: 0,
+        riskLevel: 'medium' as any,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
         profile: {
           firstName: formData.firstName,
           lastName: formData.lastName,
@@ -123,23 +141,14 @@ const RegisterPage: React.FC = () => {
             currency: 'BTC',
             theme: 'dark' as any
           }
-        },
-        email: formData.email,
-        reputationScore: 100,
-        kycStatus: 'not_started' as any,
-        isActive: true,
-        totalLent: 0,
-        totalBorrowed: 0,
-        successfulLoans: 0,
-        defaultedLoans: 0,
-        averageRepaymentTime: 0,
-        riskLevel: 'medium' as any,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      });
+        }
+      };
       
-      login(user, { address: user.walletAddress || '', chainId: 1, isConnected: true, provider: null });
-      toast.success('Registration successful!');
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      login(mockUser, { address: mockUser.walletAddress, chainId: 1, isConnected: true, provider: null });
+      toast.success('Registration successful! Welcome to P³ Lending!');
       navigate('/dashboard');
     } catch (error: any) {
       toast.error(error.message || 'Registration failed');
