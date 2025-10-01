@@ -1,0 +1,25 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="55" fill="url(#backgroundGradient)" stroke="url(#primaryGradient)" stroke-width="2"/>
+  
+  <!-- P Letter -->
+  <text x="60" y="75" font-family="Inter, sans-serif" font-size="48" font-weight="700" text-anchor="middle" fill="url(#primaryGradient)">P</text>
+  
+  <!-- Superscript 3 -->
+  <text x="85" y="50" font-family="Inter, sans-serif" font-size="24" font-weight="600" text-anchor="middle" fill="url(#accentGradient)">³</text>
+</svg>
