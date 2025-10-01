@@ -32,29 +32,35 @@ export const wagmiConfig = createConfig({
   },
 })
 
-// Create the modal - ensure proper initialization
-export const appKit = projectId ? createAppKit({
-  adapters: [wagmiConfig],
-  projectId,
-  defaultNetwork: mainnet,
-  metadata,
-  features: {
-    analytics: true,
-    email: false,
-    socials: ['google', 'x', 'github', 'discord'],
-    emailShowWallets: true,
-  },
-  // Push notifications configuration
-  enablePushNotifications: true,
-  themeMode: 'light',
-  themeVariables: {
-    '--w3m-color-mix': '#667eea',
-    '--w3m-color-mix-strength': 40,
-  },
-  enableNetworkView: true,
-  enableAccountView: true,
-  enableOnramp: true,
-}) : null
+// Create the modal - ensure proper initialization with error handling
+export const appKit = projectId ? (() => {
+  try {
+    return createAppKit({
+      adapters: [wagmiConfig],
+      projectId,
+      defaultNetwork: mainnet,
+      metadata,
+      features: {
+        analytics: true,
+        email: false,
+        socials: ['google', 'x', 'github', 'discord'],
+        emailShowWallets: true,
+      },
+      themeMode: 'light',
+      themeVariables: {
+        '--w3m-color-mix': '#667eea',
+        '--w3m-color-mix-strength': 40,
+      },
+      enableNetworkView: true,
+      enableAccountView: true,
+      enableOnramp: true,
+    });
+  } catch (error) {
+    console.error('Failed to create Reown AppKit:', error);
+    console.warn('Reown project may not be fully configured. Please complete the setup in the Reown dashboard.');
+    return null;
+  }
+})() : null
 
 // Create a client
 export const queryClient = new QueryClient()
