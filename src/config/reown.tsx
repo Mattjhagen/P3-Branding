@@ -9,7 +9,7 @@ import { createConfig } from 'wagmi'
 export const projectId = import.meta.env.VITE_REOWN_PROJECT_ID || ''
 
 if (!projectId) {
-  throw new Error('Project ID is not defined. Please add VITE_REOWN_PROJECT_ID to your .env file')
+  console.warn('Project ID is not defined. Please add VITE_REOWN_PROJECT_ID to your .env file')
 }
 
 // Create a metadata object - this will be used in the future
@@ -32,8 +32,8 @@ export const wagmiConfig = createConfig({
   },
 })
 
-// Create the modal
-export const appKit = createAppKit({
+// Create the modal - simplified configuration to avoid errors
+export const appKit = projectId ? createAppKit({
   adapters: [wagmiConfig],
   projectId,
   defaultNetwork: mainnet,
@@ -52,7 +52,7 @@ export const appKit = createAppKit({
   enableNetworkView: true,
   enableAccountView: true,
   enableOnramp: true,
-})
+}) : null
 
 // Create a client
 export const queryClient = new QueryClient()

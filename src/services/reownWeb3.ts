@@ -10,7 +10,15 @@ export const useReownWeb3 = () => {
   const { data: balance } = useBalance({ address })
   const chainId = useChainId()
   const { switchChain } = useSwitchChain()
-  const { open } = useAppKit()
+  
+  // Safely get appKit - it might be null if projectId is not set
+  let open: (() => void) | null = null
+  try {
+    const appKit = useAppKit()
+    open = appKit?.open || null
+  } catch (error) {
+    console.warn('Reown AppKit not available:', error)
+  }
 
   // Convert to our WalletConnection type
   const walletConnection: WalletConnection | null = isConnected ? {
@@ -24,7 +32,12 @@ export const useReownWeb3 = () => {
   // Connect wallet using Reown modal
   const connectWallet = async () => {
     try {
-      open()
+      if (open) {
+        open()
+      } else {
+        console.warn('Reown AppKit not available. Please check your project ID configuration.')
+        throw new Error('Reown AppKit not available')
+      }
     } catch (error) {
       console.error('Failed to open Reown modal:', error)
       throw error
