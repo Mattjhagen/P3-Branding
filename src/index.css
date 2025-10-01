@@ -25,6 +25,18 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+/* Enhanced smooth scrolling with momentum */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -119,7 +131,12 @@ body {
 }
 
 .card-hover {
-  @apply transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10 hover:border-primary-500/30 hover:-translate-y-1;
+  @apply transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10 hover:border-primary-500/30 hover:-translate-y-1 hover:scale-[1.02];
+}
+
+.card-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.15), 0 0 0 1px rgba(102, 126, 234, 0.1);
 }
 
 /* Input styles */

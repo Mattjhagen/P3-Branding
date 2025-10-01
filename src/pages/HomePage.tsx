@@ -168,7 +168,7 @@ const HomePage: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -179,14 +179,20 @@ const HomePage: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="text-center"
+                  className="group"
                 >
-                  <div className="card card-hover">
-                    <Icon className="h-8 w-8 text-primary-400 mx-auto mb-4" />
-                    <div className="text-3xl font-bold text-white mb-2">
-                      {isLoading ? '...' : stat.value}
+                  <div className="card card-hover h-full flex flex-col items-center justify-center text-center p-6">
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary-500/10 mb-4 group-hover:bg-primary-500/20 transition-colors">
+                      <Icon className="h-8 w-8 text-primary-400" />
                     </div>
-                    <div className="text-gray-400 text-sm">{stat.label}</div>
+                    <div className="text-3xl font-bold text-white mb-2 group-hover:text-primary-300 transition-colors">
+                      {isLoading ? (
+                        <div className="animate-pulse bg-gray-700 h-8 w-20 rounded"></div>
+                      ) : (
+                        stat.value
+                      )}
+                    </div>
+                    <div className="text-gray-400 text-sm font-medium">{stat.label}</div>
                   </div>
                 </motion.div>
               );
@@ -223,13 +229,15 @@ const HomePage: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="card card-hover"
+                  className="group"
                 >
-                  <div className={`h-16 w-16 rounded-xl bg-gray-800 flex items-center justify-center mb-6 ${feature.color}`}>
-                    <Icon className="h-8 w-8" />
+                  <div className="card card-hover h-full flex flex-col">
+                    <div className={`h-16 w-16 rounded-xl bg-gray-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform ${feature.color}`}>
+                      <Icon className="h-8 w-8" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4 group-hover:text-primary-300 transition-colors">{feature.title}</h3>
+                    <p className="text-gray-400 leading-relaxed flex-grow">{feature.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{feature.description}</p>
                 </motion.div>
               );
             })}
