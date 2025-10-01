@@ -1,0 +1,90 @@
+{
+  "display_information": {
+    "name": "P3 Lending Bot",
+    "description": "Decentralized Bitcoin lending platform with smart contracts and KYC verification for secure micro-loans.",
+    "background_color": "#000000",
+    "long_description": "P3 Lending is a comprehensive DeFi platform for secure peer-to-peer Bitcoin lending through smart contracts. Features KYC verification, reputation systems, and automated loan management with real-time notifications."
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "P3 Lending Bot",
+      "always_online": true
+    },
+    "slash_commands": [
+      {
+        "command": "/loan-status",
+        "url": "https://4bf6ba8e.p3-lending-platform.pages.dev/slack/webhook",
+        "description": "Check loan status and details",
+        "usage_hint": "[loan-id]",
+        "should_escape": false
+      },
+      {
+        "command": "/tip",
+        "url": "https://4bf6ba8e.p3-lending-platform.pages.dev/slack/webhook",
+        "description": "Send micro-transaction tip to another user",
+        "usage_hint": "[@user] [amount] [message]",
+        "should_escape": false
+      },
+      {
+        "command": "/create-loan",
+        "url": "https://4bf6ba8e.p3-lending-platform.pages.dev/slack/webhook",
+        "description": "Create a new loan request",
+        "usage_hint": "[amount] [interest-rate] [duration]",
+        "should_escape": false
+      },
+      {
+        "command": "/portfolio",
+        "url": "https://4bf6ba8e.p3-lending-platform.pages.dev/slack/webhook",
+        "description": "View your lending/borrowing portfolio",
+        "usage_hint": "[type: lending|borrowing]",
+        "should_escape": false
+      },
+      {
+        "command": "/reputation",
+        "url": "https://4bf6ba8e.p3-lending-platform.pages.dev/slack/webhook",
+        "description": "Check user reputation score",
+        "usage_hint": "[user-address]",
+        "should_escape": false
+      },
+      {
+        "command": "/market",
+        "url": "https://4bf6ba8e.p3-lending-platform.pages.dev/slack/webhook",
+        "description": "View current market rates and available loans",
+        "usage_hint": "[filter: available|funded]",
+        "should_escape": false
+      }
+    ]
+  },
+  "oauth_config": {
+    "redirect_urls": [
+      "https://4bf6ba8e.p3-lending-platform.pages.dev/auth/slack/callback"
+    ],
+    "scopes": {
+      "user": [
+        "admin"
+      ],
+      "bot": [
+        "app_mentions:read",
+        "channels:read",
+        "chat:write",
+        "commands",
+        "incoming-webhook",
+        "users:read"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "request_url": "https://4bf6ba8e.p3-lending-platform.pages.dev/slack/webhook",
+      "bot_events": [
+        "app_mention"
+      ]
+    },
+    "interactivity": {
+      "is_enabled": true,
+      "request_url": "https://4bf6ba8e.p3-lending-platform.pages.dev/slack/webhook"
+    },
+    "org_deploy_enabled": true,
+    "socket_mode_enabled": false
+  }
+}

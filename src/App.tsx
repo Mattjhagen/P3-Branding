@@ -27,6 +27,7 @@ import HelpPage from '@/pages/HelpPage';
 import ContactPage from '@/pages/ContactPage';
 import ForgotPasswordPage from '@/pages/ForgotPasswordPage';
 import SmartWalletPage from '@/pages/SmartWalletPage';
+import SlackWebhookPage from '@/pages/SlackWebhookPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 // Loading component
@@ -156,6 +157,9 @@ const App: React.FC = () => {
 
           {/* OAuth callback routes */}
           <Route path="/auth/callback/:provider" element={<OAuthCallback />} />
+
+          {/* Slack webhook route */}
+          <Route path="/slack/webhook" element={<SlackWebhookPage />} />
 
           {/* Public support pages */}
           <Route path="/help" element={<HelpPage />} />

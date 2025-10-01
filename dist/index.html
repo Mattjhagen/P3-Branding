@@ -40,7 +40,22 @@
     
     <!-- PWA manifest -->
     <link rel="manifest" href="/manifest.json">
-  <script type="module" crossorigin src="/assets/index-CT3bD2jN.js"></script>
+    
+    <!-- OneSignal Push Notifications -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "5a8598b2-bb05-4b6e-bcea-06ff23170f65",
+          safari_web_id: "web.onesignal.auto.0c90051e-4735-447d-b203-75e3767d91b9",
+          notifyButton: {
+            enable: true,
+          },
+        });
+      });
+    </script>
+  <script type="module" crossorigin src="/assets/index-BBDCDIFS.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/vendor-D7z7BunA.js">
   <link rel="modulepreload" crossorigin href="/assets/web3-ldmcRN87.js">
   <link rel="modulepreload" crossorigin href="/assets/ui-D2AGVv9C.js">

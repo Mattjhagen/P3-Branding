@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P³ Lending - Loan Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        
+        .header {
+            background-color: #667eea;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 30px 20px;
+        }
+        
+        .alert {
+            background-color: #e6fffa;
+            border: 1px solid #38b2ac;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .alert-success {
+            background-color: #f0fff4;
+            border-color: #48bb78;
+        }
+        
+        .alert-warning {
+            background-color: #fffbeb;
+            border-color: #ed8936;
+        }
+        
+        .alert-danger {
+            background-color: #fed7d7;
+            border-color: #f56565;
+        }
+        
+        .loan-details {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 5px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #4a5568;
+        }
+        
+        .detail-value {
+            color: #2d3748;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
+        
+        .button-secondary {
+            background-color: #718096;
+        }
+        
+        .footer {
+            background-color: #2d3748;
+            color: #a0aec0;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .status-active {
+            background-color: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .status-completed {
+            background-color: #bee3f8;
+            color: #2a4365;
+        }
+        
+        .status-overdue {
+            background-color: #fed7d7;
+            color: #742a2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">P³ Lending</div>
+            <div>Loan Update Notification</div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <h2>📊 Your Loan Status Update</h2>
+            
+            <p>Hello [User Name],</p>
+            
+            <p>We have an important update regarding your loan on the P³ Lending platform.</p>
+            
+            <!-- Alert Box -->
+            <div class="alert alert-success">
+                <strong>✅ Payment Received!</strong><br>
+                Your loan payment of 0.05 BTC has been successfully processed and your reputation score has been updated.
+            </div>
+            
+            <!-- Loan Details -->
+            <div class="loan-details">
+                <h3>Loan Details</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Loan ID:</span>
+                    <span class="detail-value">#P3L-2024-001247</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Amount:</span>
+                    <span class="detail-value">0.25 BTC</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Interest Rate:</span>
+                    <span class="detail-value">8.5% APR</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value">
+                        <span class="status-badge status-active">Active</span>
+                    </span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Next Payment Due:</span>
+                    <span class="detail-value">March 15, 2024</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Remaining Balance:</span>
+                    <span class="detail-value">0.20 BTC</span>
+                </div>
+            </div>
+            
+            <!-- Reputation Update -->
+            <div class="alert">
+                <strong>⭐ Reputation Score Update</strong><br>
+                Your reputation score has increased from 847 to 862 (+15 points) for timely payment. 
+                This improves your eligibility for larger loans and better interest rates.
+            </div>
+            
+            <!-- Action Buttons -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://p3lending.space/dashboard" class="button">View Dashboard</a>
+                <a href="https://p3lending.space/loans" class="button button-secondary">Manage Loans</a>
+            </div>
+            
+            <p>Thank you for being a valued member of the P³ Lending community. Keep up the great work!</p>
+            
+            <p>Best regards,<br>
+            The P³ Lending Team</p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <strong>P³ Lending</strong><br>
+            Secure • Transparent • AI-Powered<br><br>
+            
+            <a href="https://p3lending.space/help" style="color: #667eea;">Help Center</a> | 
+            <a href="https://p3lending.space/contact" style="color: #667eea;">Contact Support</a><br><br>
+            
+            This is an automated notification. Please do not reply to this email.<br>
+            <a href="https://p3lending.space/unsubscribe" style="color: #667eea;">Unsubscribe</a> | 
+            <a href="https://p3lending.space/privacy-policy.html" style="color: #667eea;">Privacy Policy</a>
+        </div>
+    </div>
+</body>
+</html>

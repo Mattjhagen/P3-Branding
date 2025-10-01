@@ -16,9 +16,7 @@ command = "npm run build"
 cwd = "."
 
 # Pages configuration
-[[pages_builds]]
-source = "dist"
-destination_id = "p3-lending-platform"
+pages_build_output_dir = "dist"
 
 # Environment variables
 [vars]
