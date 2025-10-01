@@ -32,7 +32,7 @@ export const wagmiConfig = createConfig({
   },
 })
 
-// Create the modal - simplified configuration to avoid errors
+// Create the modal - ensure proper initialization
 export const appKit = projectId ? createAppKit({
   adapters: [wagmiConfig],
   projectId,
