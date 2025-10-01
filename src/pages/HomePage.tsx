@@ -170,15 +170,15 @@ const HomePage: React.FC = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex items-center justify-center mb-12"
+              className="flex flex-col items-center justify-center mb-20"
             >
               <img 
                 src="/logo-p3.svg" 
                 alt="P³ Lending" 
-                className="h-24 w-24 mr-6 filter drop-shadow-2xl"
+                className="h-24 w-24 mb-6 filter drop-shadow-2xl"
               />
-              <div className="text-left">
-                <h1 className="text-6xl md:text-8xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+              <div className="text-center">
+                <h1 className="text-6xl md:text-8xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">
                   P³ Lending
                 </h1>
                 <p className="text-xl text-gray-400 font-light">
@@ -192,7 +192,7 @@ const HomePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
+              className="text-5xl md:text-7xl font-bold mb-12 leading-tight text-center"
             >
               Meet your{' '}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -207,7 +207,7 @@ const HomePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto font-light leading-relaxed"
+              className="text-xl md:text-2xl text-gray-300 mb-16 max-w-4xl mx-auto font-light leading-relaxed text-center"
             >
               Revolutionizing peer-to-peer finance through blockchain technology, 
               Bitcoin, and trust-based reputation systems. Join thousands building 
@@ -219,7 +219,7 @@ const HomePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+              className="flex flex-col sm:flex-row gap-6 justify-center mb-20"
             >
               {isAuthenticated ? (
                 <Link
@@ -255,7 +255,7 @@ const HomePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
-              className="flex items-center justify-center space-x-4 text-gray-400"
+              className="flex flex-col items-center justify-center space-y-4 text-gray-400"
             >
               <button className="group flex items-center space-x-3 hover:text-white transition-colors">
                 <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -263,21 +263,21 @@ const HomePage: React.FC = () => {
                 </div>
                 <span className="font-medium">Watch Demo</span>
               </button>
-              <span className="text-sm">See how P³ Lending works</span>
+              <span className="text-sm text-center">See how P³ Lending works</span>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="relative z-10 py-24 bg-gradient-to-r from-gray-900 to-black">
+      <section className="relative z-10 py-32 bg-gradient-to-r from-gray-900 to-black">
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-12"
           >
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -290,10 +290,10 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="text-center group"
                 >
-                  <div className="mb-6 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl inline-block group-hover:scale-110 transition-transform">
+                  <div className="mb-8 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl inline-block group-hover:scale-110 transition-transform">
                     <Icon className="h-8 w-8 text-cyan-400" />
                   </div>
-                  <div className="text-4xl font-bold text-white mb-2 tracking-tight">
+                  <div className="text-4xl font-bold text-white mb-4 tracking-tight">
                     {isLoading ? (
                       <div className="animate-pulse bg-gray-700 h-10 w-24 rounded mx-auto"></div>
                     ) : (
@@ -309,16 +309,16 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section className="relative z-10 py-32 bg-black">
+      <section className="relative z-10 py-40 bg-black">
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-24"
+            className="text-center mb-32"
           >
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-12 tracking-tight">
               Built for the{' '}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 future
@@ -330,7 +330,7 @@ const HomePage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -342,11 +342,11 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="group relative"
                 >
-                  <div className="bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
-                    <div className="mb-6 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl inline-block group-hover:scale-110 transition-transform">
+                  <div className="bg-gradient-to-br from-gray-900 to-black p-10 rounded-2xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
+                    <div className="mb-8 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl inline-block group-hover:scale-110 transition-transform">
                       <Icon className="h-8 w-8 text-cyan-400" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{feature.title}</h3>
+                    <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">{feature.title}</h3>
                     <p className="text-gray-300 leading-relaxed">{feature.description}</p>
                   </div>
                 </motion.div>
@@ -357,16 +357,16 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className="relative z-10 py-32 bg-gradient-to-br from-gray-900 to-black">
+      <section className="relative z-10 py-40 bg-gradient-to-br from-gray-900 to-black">
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-24"
+            className="text-center mb-32"
           >
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-12 tracking-tight">
               How it{' '}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 works
@@ -377,7 +377,7 @@ const HomePage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
               {
                 step: "01",
@@ -429,7 +429,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 py-32 bg-black">
+      <section className="relative z-10 py-40 bg-black">
         <div className="max-w-6xl mx-auto px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -437,7 +437,7 @@ const HomePage: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-12 tracking-tight">
               Ready to{' '}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 revolutionize
@@ -445,7 +445,7 @@ const HomePage: React.FC = () => {
               <br />
               your finances?
             </h2>
-            <p className="text-xl text-gray-300 mb-16 font-light leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mb-20 font-light leading-relaxed max-w-3xl mx-auto">
               Join thousands of users who are already building the future of finance. 
               Start your journey with P³ Lending today.
             </p>
@@ -474,7 +474,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Trust Indicators */}
-      <section className="relative z-10 py-24 bg-gradient-to-r from-gray-900 to-black">
+      <section className="relative z-10 py-32 bg-gradient-to-r from-gray-900 to-black">
         <div className="max-w-6xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -483,10 +483,10 @@ const HomePage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h3 className="text-3xl font-bold text-white mb-16">
+            <h3 className="text-3xl font-bold text-white mb-20">
               Trusted by thousands worldwide
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
               <div className="flex flex-col items-center space-y-4 group">
                 <div className="p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl group-hover:scale-110 transition-transform">
                   <CheckCircle className="h-12 w-12 text-cyan-400" />
