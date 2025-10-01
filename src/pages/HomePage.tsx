@@ -105,51 +105,56 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-900">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        {/* Background Animation */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 via-transparent to-accent-900/20">
-          <div className="absolute inset-0 bg-[url('/hero.jpg')] bg-cover bg-center opacity-10"></div>
+      {/* Hero Section - Apple-inspired minimalism */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+            backgroundSize: '20px 20px'
+          }}></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="relative max-w-6xl mx-auto px-6 py-32">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="gradient-text">P³ Lending</span>
+            <h1 className="text-6xl md:text-8xl font-light mb-8 tracking-tight">
+              <span className="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+                P³ Lending
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
-              Revolutionizing finance through{' '}
-              <span className="text-blue-400 font-semibold">blockchain technology</span>,{' '}
-              <span className="text-orange-400 font-semibold">Bitcoin</span>, and{' '}
-              <span className="text-cyan-400 font-semibold">trust-based reputation</span> systems
+            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+              The future of finance is{' '}
+              <span className="text-white font-medium">decentralized</span>,{' '}
+              <span className="text-white font-medium">transparent</span>, and{' '}
+              <span className="text-white font-medium">accessible</span> to everyone
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               {isAuthenticated ? (
                 <Link
                   to="/dashboard"
-                  className="btn btn-primary btn-lg flex items-center justify-center space-x-2"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-full font-medium text-lg transition-all duration-200 hover:bg-gray-100 hover:scale-105 hover:shadow-xl"
                 >
                   <span>Go to Dashboard</span>
-                  <ArrowRight className="h-5 w-5" />
+                  <ArrowRight className="h-5 w-5 ml-2" />
                 </Link>
               ) : (
                 <>
                   <Link
                     to="/register"
-                    className="btn btn-primary btn-lg flex items-center justify-center space-x-2"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-full font-medium text-lg transition-all duration-200 hover:bg-gray-100 hover:scale-105 hover:shadow-xl"
                   >
                     <span>Start Lending</span>
-                    <ArrowRight className="h-5 w-5" />
+                    <ArrowRight className="h-5 w-5 ml-2" />
                   </Link>
                   <Link
                     to="/login"
-                    className="btn btn-outline btn-lg"
+                    className="inline-flex items-center justify-center px-8 py-4 border border-gray-600 text-white rounded-full font-medium text-lg transition-all duration-200 hover:border-gray-500 hover:bg-gray-800/50"
                   >
                     Request a Loan
                   </Link>
@@ -160,15 +165,15 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Stats Section - Coinbase/Robinhood inspired */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -181,18 +186,18 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="group"
                 >
-                  <div className="card card-hover h-full p-6" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '1rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '4rem', height: '4rem', borderRadius: '50%', backgroundColor: 'rgba(102, 126, 234, 0.1)', transition: 'background-color 0.3s' }}>
-                      <Icon className="h-8 w-8 text-primary-400" />
+                  <div className="text-center p-6 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gray-200 flex items-center justify-center group-hover:bg-gray-300 transition-colors">
+                      <Icon className="h-6 w-6 text-gray-600" />
                     </div>
-                    <div className="text-3xl font-bold text-white group-hover:text-primary-300 transition-colors">
+                    <div className="text-3xl font-semibold text-gray-900 mb-1">
                       {isLoading ? (
-                        <div className="animate-pulse bg-gray-700 h-8 w-20 rounded" style={{ margin: '0 auto' }}></div>
+                        <div className="animate-pulse bg-gray-300 h-8 w-20 rounded mx-auto"></div>
                       ) : (
                         stat.value
                       )}
                     </div>
-                    <div className="text-gray-400 text-sm font-medium">{stat.label}</div>
+                    <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
                   </div>
                 </motion.div>
               );
@@ -201,21 +206,21 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Features Section - Apple-inspired */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Platform Features
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
+              Built for the future
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Experience the future of decentralized finance with our comprehensive suite of features
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
+              Every feature designed with precision, every interaction crafted for perfection
             </p>
           </motion.div>
 
@@ -231,12 +236,12 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="group"
                 >
-                  <div className="card card-hover h-full p-6" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <div className={`h-16 w-16 rounded-xl bg-gray-800 group-hover:scale-110 transition-transform ${feature.color}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Icon className="h-8 w-8" />
+                  <div className="bg-white rounded-3xl p-8 h-full transition-all duration-300 hover:shadow-xl hover:scale-105 border border-gray-100">
+                    <div className="w-14 h-14 rounded-2xl bg-gray-100 flex items-center justify-center mb-6 group-hover:bg-gray-200 transition-colors">
+                      <Icon className="h-7 w-7 text-gray-700" />
                     </div>
-                    <h3 className="text-xl font-semibold group-hover:text-primary-300 transition-colors">{feature.title}</h3>
-                    <p className="text-gray-400 leading-relaxed flex-grow">{feature.description}</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
+                    <p className="text-gray-600 leading-relaxed font-light">{feature.description}</p>
                   </div>
                 </motion.div>
               );
@@ -245,34 +250,34 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-900/20 to-accent-900/20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* CTA Section - Apple-inspired */}
+      <section className="py-24 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Join the Future?
+            <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
+              Ready to begin?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Start your journey with P³ Lending today and experience the power of decentralized finance
+            <p className="text-xl text-gray-400 mb-12 font-light leading-relaxed max-w-2xl mx-auto">
+              Join thousands of users who are already building the future of finance
             </p>
             
             {!isAuthenticated && (
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/register"
-                  className="btn btn-primary btn-xl flex items-center justify-center space-x-2"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-full font-medium text-lg transition-all duration-200 hover:bg-gray-100 hover:scale-105 hover:shadow-xl"
                 >
                   <span>Get Started</span>
-                  <ArrowRight className="h-5 w-5" />
+                  <ArrowRight className="h-5 w-5 ml-2" />
                 </Link>
                 <Link
                   to="/login"
-                  className="btn btn-outline btn-xl"
+                  className="inline-flex items-center justify-center px-8 py-4 border border-gray-600 text-white rounded-full font-medium text-lg transition-all duration-200 hover:border-gray-500 hover:bg-gray-800/50"
                 >
                   Sign In
                 </Link>
@@ -282,9 +287,9 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="py-16 bg-gray-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Trust Indicators - Minimalist */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -292,19 +297,27 @@ const HomePage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h3 className="text-2xl font-bold mb-8">Trusted by Thousands</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex items-center justify-center space-x-2">
-                <CheckCircle className="h-6 w-6 text-green-400" />
-                <span className="text-gray-300">Fully Audited Smart Contracts</span>
+              <div className="flex flex-col items-center space-y-3">
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                  <CheckCircle className="h-6 w-6 text-green-600" />
+                </div>
+                <span className="text-gray-900 font-medium">Fully Audited</span>
+                <span className="text-gray-600 text-sm">Smart Contracts</span>
               </div>
-              <div className="flex items-center justify-center space-x-2">
-                <Shield className="h-6 w-6 text-blue-400" />
-                <span className="text-gray-300">Bank-Grade Security</span>
+              <div className="flex flex-col items-center space-y-3">
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-blue-600" />
+                </div>
+                <span className="text-gray-900 font-medium">Bank-Grade</span>
+                <span className="text-gray-600 text-sm">Security</span>
               </div>
-              <div className="flex items-center justify-center space-x-2">
-                <Globe className="h-6 w-6 text-purple-400" />
-                <span className="text-gray-300">Global Accessibility</span>
+              <div className="flex flex-col items-center space-y-3">
+                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+                  <Globe className="h-6 w-6 text-purple-600" />
+                </div>
+                <span className="text-gray-900 font-medium">Global</span>
+                <span className="text-gray-600 text-sm">Accessibility</span>
               </div>
             </div>
           </motion.div>
