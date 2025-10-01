@@ -15,13 +15,9 @@ import {
   Lock,
   Eye,
   Play,
-  Sparkles,
   Target,
-  Award,
   Rocket,
-  Heart,
-  Infinity,
-  Handshake
+  Hand
 } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
 import { apiService } from '@/services/api';
@@ -394,7 +390,7 @@ const HomePage: React.FC = () => {
                 step: "02", 
                 title: "Lend or Borrow",
                 description: "Browse opportunities, set your terms, and let smart contracts handle the rest automatically.",
-                icon: Handshake,
+                icon: Hand,
                 color: "from-blue-500 to-purple-500"
               },
               {
