@@ -116,62 +116,100 @@ const HomePage: React.FC = () => {
         ? 'bg-white text-gray-900' 
         : 'bg-black text-white'
     }`}>
-      {/* Animated Background */}
-      <div className={`fixed inset-0 ${
-        theme === 'light'
-          ? 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
-          : 'bg-gradient-to-br from-black via-gray-900 to-black'
-      }`}>
+      {/* P³ Lending Brand Colors Background */}
+      <div className="fixed inset-0 overflow-hidden" style={{ backgroundColor: '#1E3A8A' }}>
+        {/* Animated network lines with brand colors */}
         <div className="absolute inset-0">
-          {/* Animated grid pattern */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="grid grid-cols-12 gap-4 h-full">
-              {Array.from({ length: 144 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  className={`border ${
-                    theme === 'light' 
-                      ? 'border-blue-500/10' 
-                      : 'border-cyan-500/10'
-                  }`}
-                  animate={{
-                    opacity: [0.1, 0.3, 0.1],
-                  }}
-                  transition={{
-                    duration: 3 + Math.random() * 2,
-                    repeat: Infinity,
-                    delay: Math.random() * 2,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
+          {/* Main network lines - alternating between pink and green */}
+          {Array.from({ length: 12 }).map((_, i) => {
+            const isPink = i % 2 === 0;
+            const color = isPink ? '#FF5B77' : '#5DE794';
+            return (
+              <motion.div
+                key={`line-${i}`}
+                className="absolute h-px"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${Math.random() * 300 + 100}px`,
+                  transform: `rotate(${Math.random() * 360}deg)`,
+                  background: `linear-gradient(to right, transparent, ${color}, transparent)`,
+                  boxShadow: `0 0 10px ${color}, 0 0 20px ${color}, 0 0 30px ${color}`,
+                }}
+                animate={{
+                  opacity: [0.3, 1, 0.3],
+                  scaleX: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 4 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            );
+          })}
           
-          {/* Floating particles */}
-          {Array.from({ length: 20 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className={`absolute w-1 h-1 rounded-full ${
-                theme === 'light' 
-                  ? 'bg-blue-500' 
-                  : 'bg-cyan-400'
-              }`}
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -20, 0],
-                opacity: [0.3, 1, 0.3],
-              }}
-              transition={{
-                duration: 2 + Math.random() * 3,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
+          {/* Intersection points with plus signs */}
+          {Array.from({ length: 8 }).map((_, i) => {
+            const isPink = i % 2 === 0;
+            const color = isPink ? '#FF5B77' : '#5DE794';
+            return (
+              <motion.div
+                key={`plus-${i}`}
+                className="absolute font-bold text-2xl"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  color: color,
+                  textShadow: `0 0 10px ${color}, 0 0 20px ${color}`,
+                }}
+                animate={{
+                  opacity: [0.5, 1, 0.5],
+                  scale: [0.8, 1.2, 0.8],
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              >
+                +
+              </motion.div>
+            );
+          })}
+          
+          {/* Floating data points */}
+          {Array.from({ length: 20 }).map((_, i) => {
+            const isPink = i % 2 === 0;
+            const color = isPink ? '#FF5B77' : '#5DE794';
+            return (
+              <motion.div
+                key={`point-${i}`}
+                className="absolute w-1 h-1 rounded-full"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  backgroundColor: color,
+                  boxShadow: `0 0 6px ${color}, 0 0 12px ${color}`,
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.4, 1, 0.4],
+                  scale: [1, 1.5, 1],
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 3,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            );
+          })}
         </div>
+        
+        {/* Subtle gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-black/20 to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-pink-500/5 to-transparent" />
       </div>
 
       {/* Hero Section */}
@@ -190,42 +228,83 @@ const HomePage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="flex flex-col items-center justify-center mb-20"
             >
-              <img 
-                src="/logo-p3.svg" 
-                alt="P³ Lending" 
-                className="h-24 w-24 mb-6 filter drop-shadow-2xl"
-              />
+              {/* Glowing logo container with brand colors */}
+              <motion.div
+                animate={{
+                  boxShadow: [
+                    '0 0 20px rgba(255, 91, 119, 0.3), 0 0 40px rgba(93, 231, 148, 0.3)',
+                    '0 0 40px rgba(255, 91, 119, 0.6), 0 0 80px rgba(93, 231, 148, 0.6)',
+                    '0 0 20px rgba(255, 91, 119, 0.3), 0 0 40px rgba(93, 231, 148, 0.3)',
+                  ],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative mb-8"
+              >
+                <div 
+                  className="absolute inset-0 rounded-full blur-xl opacity-30"
+                  style={{
+                    background: 'linear-gradient(45deg, #FF5B77, #5DE794)',
+                  }}
+                />
+                <img 
+                  src="/logo-p3.svg" 
+                  alt="P³ Lending" 
+                  className="relative h-24 w-24 filter drop-shadow-2xl"
+                />
+              </motion.div>
+              
               <div className="text-center">
-                <h1 className={`text-6xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent mb-4 ${
-                  theme === 'light'
-                    ? 'bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600'
-                    : 'bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600'
-                }`}>
+                <motion.h1 
+                  className={`text-6xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent mb-4 ${
+                    theme === 'light'
+                      ? 'bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600'
+                      : 'bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600'
+                  }`}
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    backgroundSize: '200% 200%',
+                  }}
+                >
                   P³ Lending
-                </h1>
-                <p className={`text-xl font-light ${
-                  theme === 'light' ? 'text-gray-600' : 'text-gray-400'
-                }`}>
+                </motion.h1>
+                <motion.p 
+                  className={`text-xl font-light ${
+                    theme === 'light' ? 'text-gray-600' : 'text-gray-400'
+                  }`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                >
                   Peer-to-Peer = 2 + 1 for helping those in need
-                </p>
+                </motion.p>
               </div>
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Main Headline with Brand Colors */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className={`text-5xl md:text-7xl font-bold mb-12 leading-tight text-center ${
-                theme === 'light' ? 'text-gray-900' : 'text-white'
-              }`}
+              className="text-6xl md:text-8xl font-bold mb-12 leading-tight text-center text-white"
             >
               Meet your{' '}
-              <span className={`bg-clip-text text-transparent ${
-                theme === 'light'
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600'
-                  : 'bg-gradient-to-r from-cyan-400 to-blue-500'
-              }`}>
+              <span 
+                style={{
+                  color: '#FF5B77',
+                  textShadow: '0 0 20px #FF5B77, 0 0 40px #FF5B77, 0 0 60px #FF5B77',
+                }}
+              >
                 decentralized
               </span>
               <br />
@@ -237,16 +316,14 @@ const HomePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className={`text-xl md:text-2xl mb-16 max-w-4xl mx-auto font-light leading-relaxed text-center ${
-                theme === 'light' ? 'text-gray-700' : 'text-gray-300'
-              }`}
+              className="text-xl md:text-2xl mb-16 max-w-4xl mx-auto font-light leading-relaxed text-center text-gray-300"
             >
               Revolutionizing peer-to-peer finance through blockchain technology, 
               Bitcoin, and trust-based reputation systems. Join thousands building 
               the future of accessible credit.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons with Brand Colors */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -254,38 +331,57 @@ const HomePage: React.FC = () => {
               className="flex flex-col sm:flex-row gap-6 justify-center mb-20"
             >
               {isAuthenticated ? (
-                <Link
-                  to="/dashboard"
-                  className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:from-cyan-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <span>Go to Dashboard</span>
-                  <ArrowRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                  <Link
+                    to="/dashboard"
+                    className="group relative inline-flex items-center justify-center px-12 py-4 text-black rounded-lg font-bold text-lg transition-all duration-300 overflow-hidden"
+                    style={{
+                      backgroundColor: '#5DE794',
+                      boxShadow: '0 0 20px rgba(93, 231, 148, 0.4), 0 0 40px rgba(93, 231, 148, 0.2)',
+                    }}
+                  >
+                    <span className="relative z-10">Go to Dashboard</span>
+                    <ArrowRight className="relative z-10 h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
               ) : (
                 <>
-                  <Link
-                    to="/register"
-                    className={`group inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
-                      theme === 'light'
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-500 hover:to-purple-500 hover:shadow-blue-500/25'
-                        : 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-400 hover:to-blue-500 hover:shadow-cyan-500/25'
-                    }`}
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Rocket className="h-5 w-5 mr-3" />
-                    <span>Start Lending</span>
-                    <ArrowRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                  <Link
-                    to="/login"
-                    className={`group inline-flex items-center justify-center px-8 py-4 border-2 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 ${
-                      theme === 'light'
-                        ? 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
-                        : 'border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black'
-                    }`}
+                    <Link
+                      to="/register"
+                      className="group relative inline-flex items-center justify-center px-12 py-4 text-black rounded-lg font-bold text-lg transition-all duration-300 overflow-hidden"
+                      style={{
+                        backgroundColor: '#5DE794',
+                        boxShadow: '0 0 20px rgba(93, 231, 148, 0.4), 0 0 40px rgba(93, 231, 148, 0.2)',
+                      }}
+                    >
+                      <Rocket className="relative z-10 h-5 w-5 mr-3" />
+                      <span className="relative z-10">Start Lending</span>
+                      <ArrowRight className="relative z-10 h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Target className="h-5 w-5 mr-3" />
-                    <span>Request a Loan</span>
-                  </Link>
+                    <Link
+                      to="/login"
+                      className="group relative inline-flex items-center justify-center px-12 py-4 border-2 text-white rounded-lg font-bold text-lg transition-all duration-300 overflow-hidden"
+                      style={{
+                        borderColor: '#FF5B77',
+                        color: '#FF5B77',
+                      }}
+                    >
+                      <Target className="relative z-10 h-5 w-5 mr-3" />
+                      <span className="relative z-10">Request a Loan</span>
+                    </Link>
+                  </motion.div>
                 </>
               )}
             </motion.div>
@@ -318,11 +414,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className={`relative z-10 py-32 ${
-        theme === 'light'
-          ? 'bg-gradient-to-r from-gray-100 to-gray-200'
-          : 'bg-gradient-to-r from-gray-900 to-black'
-      }`}>
+      <section className="relative z-10 py-32" style={{ backgroundColor: '#1E3A8A' }}>
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -342,29 +434,25 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="text-center group"
                 >
-                  <div className={`mb-8 p-4 rounded-2xl inline-block group-hover:scale-110 transition-transform ${
-                    theme === 'light'
-                      ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10'
-                      : 'bg-gradient-to-r from-cyan-500/10 to-blue-500/10'
-                  }`}>
-                    <Icon className={`h-8 w-8 ${
-                      theme === 'light' ? 'text-blue-500' : 'text-cyan-400'
-                    }`} />
+                  <div 
+                    className="mb-8 p-4 rounded-2xl inline-block group-hover:scale-110 transition-transform"
+                    style={{
+                      background: 'linear-gradient(45deg, rgba(255, 91, 119, 0.1), rgba(93, 231, 148, 0.1))',
+                    }}
+                  >
+                    <Icon 
+                      className="h-8 w-8"
+                      style={{ color: '#5DE794' }}
+                    />
                   </div>
-                  <div className={`text-4xl font-bold mb-4 tracking-tight ${
-                    theme === 'light' ? 'text-gray-900' : 'text-white'
-                  }`}>
+                  <div className="text-4xl font-bold mb-4 tracking-tight text-white">
                     {isLoading ? (
-                      <div className={`animate-pulse h-10 w-24 rounded mx-auto ${
-                        theme === 'light' ? 'bg-gray-300' : 'bg-gray-700'
-                      }`}></div>
+                      <div className="animate-pulse h-10 w-24 rounded mx-auto bg-gray-700"></div>
                     ) : (
                       stat.value
                     )}
                   </div>
-                  <div className={`text-sm font-medium tracking-wide uppercase ${
-                    theme === 'light' ? 'text-gray-600' : 'text-gray-400'
-                  }`}>{stat.label}</div>
+                  <div className="text-sm font-medium tracking-wide uppercase text-gray-400">{stat.label}</div>
                 </motion.div>
               );
             })}
@@ -373,9 +461,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section className={`relative z-10 py-40 ${
-        theme === 'light' ? 'bg-white' : 'bg-black'
-      }`}>
+      <section className="relative z-10 py-40 bg-black">
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -384,21 +470,18 @@ const HomePage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-32"
           >
-            <h2 className={`text-5xl md:text-7xl font-bold mb-12 tracking-tight ${
-              theme === 'light' ? 'text-gray-900' : 'text-white'
-            }`}>
+            <h2 className="text-5xl md:text-7xl font-bold mb-12 tracking-tight text-white">
               Built for the{' '}
-              <span className={`bg-clip-text text-transparent ${
-                theme === 'light'
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600'
-                  : 'bg-gradient-to-r from-cyan-400 to-blue-500'
-              }`}>
+              <span 
+                style={{
+                  color: '#FF5B77',
+                  textShadow: '0 0 20px #FF5B77, 0 0 40px #FF5B77',
+                }}
+              >
                 future
               </span>
             </h2>
-            <p className={`text-xl max-w-3xl mx-auto font-light leading-relaxed ${
-              theme === 'light' ? 'text-gray-700' : 'text-gray-300'
-            }`}>
+            <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed text-gray-300">
               Every feature designed with precision, every interaction crafted for perfection. 
               Experience the next generation of decentralized finance.
             </p>
@@ -416,26 +499,28 @@ const HomePage: React.FC = () => {
                   viewport={{ once: true }}
                   className="group relative"
                 >
-                  <div className={`p-10 rounded-2xl border transition-all duration-300 hover:shadow-2xl ${
-                    theme === 'light'
-                      ? 'bg-gradient-to-br from-gray-50 to-white border-gray-200 hover:border-blue-500/50 hover:shadow-blue-500/10'
-                      : 'bg-gradient-to-br from-gray-900 to-black border-gray-800 hover:border-cyan-500/50 hover:shadow-cyan-500/10'
-                  }`}>
-                    <div className={`mb-8 p-4 rounded-xl inline-block group-hover:scale-110 transition-transform ${
-                      theme === 'light'
-                        ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10'
-                        : 'bg-gradient-to-r from-cyan-500/10 to-blue-500/10'
-                    }`}>
-                      <Icon className={`h-8 w-8 ${
-                        theme === 'light' ? 'text-blue-500' : 'text-cyan-400'
-                      }`} />
+                  <div 
+                    className="p-10 rounded-2xl border transition-all duration-300 hover:shadow-2xl bg-gradient-to-br from-gray-900 to-black border-gray-800"
+                    style={{
+                      '&:hover': {
+                        borderColor: 'rgba(93, 231, 148, 0.5)',
+                        boxShadow: '0 0 30px rgba(93, 231, 148, 0.1)',
+                      }
+                    }}
+                  >
+                    <div 
+                      className="mb-8 p-4 rounded-xl inline-block group-hover:scale-110 transition-transform"
+                      style={{
+                        background: 'linear-gradient(45deg, rgba(255, 91, 119, 0.1), rgba(93, 231, 148, 0.1))',
+                      }}
+                    >
+                      <Icon 
+                        className="h-8 w-8"
+                        style={{ color: '#5DE794' }}
+                      />
                     </div>
-                    <h3 className={`text-2xl font-bold mb-6 tracking-tight ${
-                      theme === 'light' ? 'text-gray-900' : 'text-white'
-                    }`}>{feature.title}</h3>
-                    <p className={`leading-relaxed ${
-                      theme === 'light' ? 'text-gray-700' : 'text-gray-300'
-                    }`}>{feature.description}</p>
+                    <h3 className="text-2xl font-bold mb-6 tracking-tight text-white">{feature.title}</h3>
+                    <p className="leading-relaxed text-gray-300">{feature.description}</p>
                   </div>
                 </motion.div>
               );
@@ -456,7 +541,12 @@ const HomePage: React.FC = () => {
           >
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-12 tracking-tight">
               How it{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span 
+                style={{
+                  color: '#5DE794',
+                  textShadow: '0 0 20px #5DE794, 0 0 40px #5DE794',
+                }}
+              >
                 works
               </span>
             </h2>
@@ -472,21 +562,21 @@ const HomePage: React.FC = () => {
                 title: "Connect & Verify",
                 description: "Link your wallet, complete KYC, and build your reputation score through our transparent system.",
                 icon: Shield,
-                color: "from-cyan-500 to-blue-500"
+                color: "#FF5B77"
               },
               {
                 step: "02", 
                 title: "Lend or Borrow",
                 description: "Browse opportunities, set your terms, and let smart contracts handle the rest automatically.",
                 icon: Hand,
-                color: "from-blue-500 to-purple-500"
+                color: "#5DE794"
               },
               {
                 step: "03",
                 title: "Grow & Earn",
                 description: "Watch your reputation grow, earn competitive returns, and access better rates over time.",
                 icon: TrendingUp,
-                color: "from-purple-500 to-pink-500"
+                color: "#FF5B77"
               }
             ].map((item, index) => {
               const Icon = item.icon;
@@ -500,11 +590,25 @@ const HomePage: React.FC = () => {
                   className="text-center group"
                 >
                   <div className="relative mb-8">
-                    <div className={`w-24 h-24 mx-auto bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4 group-hover:scale-110 transition-transform`}>
+                    <div 
+                      className="w-24 h-24 mx-auto rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4 group-hover:scale-110 transition-transform"
+                      style={{
+                        backgroundColor: item.color,
+                        boxShadow: `0 0 20px ${item.color}, 0 0 40px ${item.color}`,
+                      }}
+                    >
                       {item.step}
                     </div>
-                    <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full flex items-center justify-center">
-                      <Icon className="h-8 w-8 text-cyan-400" />
+                    <div 
+                      className="absolute -top-2 -right-2 w-16 h-16 rounded-full flex items-center justify-center"
+                      style={{
+                        backgroundColor: 'rgba(93, 231, 148, 0.2)',
+                      }}
+                    >
+                      <Icon 
+                        className="h-8 w-8"
+                        style={{ color: '#5DE794' }}
+                      />
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
@@ -527,7 +631,12 @@ const HomePage: React.FC = () => {
           >
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-12 tracking-tight">
               Ready to{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span 
+                style={{
+                  color: '#5DE794',
+                  textShadow: '0 0 20px #5DE794, 0 0 40px #5DE794',
+                }}
+              >
                 revolutionize
               </span>
               <br />
@@ -542,7 +651,11 @@ const HomePage: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link
                   to="/register"
-                  className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:from-cyan-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
+                  className="group inline-flex items-center justify-center px-8 py-4 text-black rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+                  style={{
+                    backgroundColor: '#5DE794',
+                    boxShadow: '0 0 20px rgba(93, 231, 148, 0.4), 0 0 40px rgba(93, 231, 148, 0.2)',
+                  }}
                 >
                   <Rocket className="h-5 w-5 mr-3" />
                   <span>Get Started Free</span>
@@ -550,7 +663,11 @@ const HomePage: React.FC = () => {
                 </Link>
                 <Link
                   to="/login"
-                  className="group inline-flex items-center justify-center px-8 py-4 border-2 border-cyan-400 text-cyan-400 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-105"
+                  className="group inline-flex items-center justify-center px-8 py-4 border-2 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+                  style={{
+                    borderColor: '#FF5B77',
+                    color: '#FF5B77',
+                  }}
                 >
                   <Target className="h-5 w-5 mr-3" />
                   <span>Request a Loan</span>
@@ -576,22 +693,46 @@ const HomePage: React.FC = () => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
               <div className="flex flex-col items-center space-y-4 group">
-                <div className="p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl group-hover:scale-110 transition-transform">
-                  <CheckCircle className="h-12 w-12 text-cyan-400" />
+                <div 
+                  className="p-4 rounded-2xl group-hover:scale-110 transition-transform"
+                  style={{
+                    background: 'linear-gradient(45deg, rgba(255, 91, 119, 0.1), rgba(93, 231, 148, 0.1))',
+                  }}
+                >
+                  <CheckCircle 
+                    className="h-12 w-12"
+                    style={{ color: '#5DE794' }}
+                  />
                 </div>
                 <span className="text-white font-bold text-xl">Fully Audited</span>
                 <span className="text-gray-400 text-sm font-medium tracking-wide uppercase">Smart Contracts</span>
               </div>
               <div className="flex flex-col items-center space-y-4 group">
-                <div className="p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl group-hover:scale-110 transition-transform">
-                  <Shield className="h-12 w-12 text-cyan-400" />
+                <div 
+                  className="p-4 rounded-2xl group-hover:scale-110 transition-transform"
+                  style={{
+                    background: 'linear-gradient(45deg, rgba(255, 91, 119, 0.1), rgba(93, 231, 148, 0.1))',
+                  }}
+                >
+                  <Shield 
+                    className="h-12 w-12"
+                    style={{ color: '#FF5B77' }}
+                  />
                 </div>
                 <span className="text-white font-bold text-xl">Bank-Grade</span>
                 <span className="text-gray-400 text-sm font-medium tracking-wide uppercase">Security</span>
               </div>
               <div className="flex flex-col items-center space-y-4 group">
-                <div className="p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl group-hover:scale-110 transition-transform">
-                  <Globe className="h-12 w-12 text-cyan-400" />
+                <div 
+                  className="p-4 rounded-2xl group-hover:scale-110 transition-transform"
+                  style={{
+                    background: 'linear-gradient(45deg, rgba(255, 91, 119, 0.1), rgba(93, 231, 148, 0.1))',
+                  }}
+                >
+                  <Globe 
+                    className="h-12 w-12"
+                    style={{ color: '#5DE794' }}
+                  />
                 </div>
                 <span className="text-white font-bold text-xl">Global</span>
                 <span className="text-gray-400 text-sm font-medium tracking-wide uppercase">Accessibility</span>
@@ -612,7 +753,15 @@ const HomePage: React.FC = () => {
                   alt="P³ Lending" 
                   className="h-10 w-10"
                 />
-                <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                <span 
+                  className="text-2xl font-bold"
+                  style={{
+                    background: 'linear-gradient(45deg, #FF5B77, #5DE794)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
                   P³ Lending
                 </span>
               </div>
@@ -625,20 +774,20 @@ const HomePage: React.FC = () => {
             <div>
               <h4 className="text-white font-semibold mb-4">Platform</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/lend" className="text-gray-400 hover:text-cyan-400 transition-colors">Lend</Link></li>
-                <li><Link to="/borrow" className="text-gray-400 hover:text-cyan-400 transition-colors">Borrow</Link></li>
-                <li><Link to="/reputation" className="text-gray-400 hover:text-cyan-400 transition-colors">Reputation</Link></li>
-                <li><Link to="/kyc" className="text-gray-400 hover:text-cyan-400 transition-colors">KYC</Link></li>
+                <li><Link to="/lend" className="text-gray-400 hover:text-green-400 transition-colors">Lend</Link></li>
+                <li><Link to="/borrow" className="text-gray-400 hover:text-green-400 transition-colors">Borrow</Link></li>
+                <li><Link to="/reputation" className="text-gray-400 hover:text-green-400 transition-colors">Reputation</Link></li>
+                <li><Link to="/kyc" className="text-gray-400 hover:text-green-400 transition-colors">KYC</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-white font-semibold mb-4">Support</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/help" className="text-gray-400 hover:text-cyan-400 transition-colors">Help Center</Link></li>
-                <li><Link to="/contact" className="text-gray-400 hover:text-cyan-400 transition-colors">Contact Us</Link></li>
-                <li><Link to="/terms-of-service.html" className="text-gray-400 hover:text-cyan-400 transition-colors">Terms of Service</Link></li>
-                <li><Link to="/privacy-policy.html" className="text-gray-400 hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/help" className="text-gray-400 hover:text-green-400 transition-colors">Help Center</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-green-400 transition-colors">Contact Us</Link></li>
+                <li><Link to="/terms-of-service.html" className="text-gray-400 hover:text-green-400 transition-colors">Terms of Service</Link></li>
+                <li><Link to="/privacy-policy.html" className="text-gray-400 hover:text-green-400 transition-colors">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>

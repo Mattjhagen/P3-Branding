@@ -1,0 +1,11 @@
+name = "p3-lending-monitor"
+main = "monitoring.js"
+compatibility_date = "2024-01-01"
+
+# Environment variables
+[vars]
+SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK/URL"
+
+# Scheduled events (runs every 5 minutes)
+[triggers]
+crons = ["*/5 * * * *"]
