@@ -157,6 +157,9 @@ const App: React.FC = () => {
 
           {/* OAuth callback routes */}
           <Route path="/auth/callback/:provider" element={<OAuthCallback />} />
+          <Route path="/auth/callback/google" element={<OAuthCallback />} />
+          <Route path="/auth/callback/github" element={<OAuthCallback />} />
+          <Route path="/auth/callback/discord" element={<OAuthCallback />} />
 
           {/* Slack webhook route */}
           <Route path="/slack/webhook" element={<SlackWebhookPage />} />
@@ -166,6 +169,10 @@ const App: React.FC = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/smart-wallet" element={<SmartWalletPage />} />
+          
+          {/* Static HTML files */}
+          <Route path="/terms-of-service.html" element={<Navigate to="/terms-of-service.html" replace />} />
+          <Route path="/privacy-policy.html" element={<Navigate to="/privacy-policy.html" replace />} />
 
           {/* Protected routes */}
           <Route path="/dashboard" element={

@@ -109,16 +109,21 @@ const Layout: React.FC = () => {
                     <a
                       key={item.name}
                       href={item.href}
-                      className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 relative group ${
                         isActiveRoute(item.href)
-                          ? 'bg-primary-500/20 text-primary-400 border border-primary-500/30'
-                          : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                          ? 'bg-gradient-to-r from-pink-500/20 to-green-500/20 text-white border border-pink-500/30 shadow-lg shadow-pink-500/10'
+                          : 'text-gray-300 hover:text-white hover:bg-gray-800/50 hover:shadow-md'
                       }`}
                     >
-                      <div className="flex items-center space-x-2">
-                        <Icon className="h-4 w-4" />
+                      <div className="flex items-center space-x-2 relative z-10">
+                        <Icon className={`h-4 w-4 transition-colors ${
+                          isActiveRoute(item.href) ? 'text-pink-400' : 'group-hover:text-pink-400'
+                        }`} />
                         <span>{item.name}</span>
                       </div>
+                      {isActiveRoute(item.href) && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-green-500/10 rounded-md animate-pulse"></div>
+                      )}
                     </a>
                   );
                 })}
@@ -130,20 +135,20 @@ const Layout: React.FC = () => {
               {/* Theme toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+                className="p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-200 hover:shadow-lg hover:shadow-pink-500/10 group"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? (
-                  <Sun className="h-5 w-5 text-yellow-400" />
+                  <Sun className="h-5 w-5 text-yellow-400 group-hover:text-yellow-300 transition-colors" />
                 ) : (
-                  <Moon className="h-5 w-5 text-blue-400" />
+                  <Moon className="h-5 w-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
                 )}
               </button>
 
               {/* Notifications */}
-              <button className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors relative">
-                <Bell className="h-5 w-5 text-gray-400" />
-                <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></span>
+              <button className="p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-200 hover:shadow-lg hover:shadow-pink-500/10 relative group">
+                <Bell className="h-5 w-5 text-gray-400 group-hover:text-pink-400 transition-colors" />
+                <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full animate-pulse"></span>
               </button>
 
                           {/* Wallet connection */}
@@ -192,17 +197,22 @@ const Layout: React.FC = () => {
                     <a
                       key={item.name}
                       href={item.href}
-                      className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 relative group ${
                         isActiveRoute(item.href)
-                          ? 'bg-primary-500/20 text-primary-400 border border-primary-500/30'
-                          : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                          ? 'bg-gradient-to-r from-pink-500/20 to-green-500/20 text-white border border-pink-500/30 shadow-lg shadow-pink-500/10'
+                          : 'text-gray-300 hover:text-white hover:bg-gray-700/50 hover:shadow-md'
                       }`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <div className="flex items-center space-x-3">
-                        <Icon className="h-5 w-5" />
+                      <div className="flex items-center space-x-3 relative z-10">
+                        <Icon className={`h-5 w-5 transition-colors ${
+                          isActiveRoute(item.href) ? 'text-pink-400' : 'group-hover:text-pink-400'
+                        }`} />
                         <span>{item.name}</span>
                       </div>
+                      {isActiveRoute(item.href) && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-green-500/10 rounded-md animate-pulse"></div>
+                      )}
                     </a>
                   );
                 })}
@@ -249,20 +259,20 @@ const Layout: React.FC = () => {
             <div>
               <h3 className="text-white font-semibold mb-4">Platform</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="/lend" className="text-gray-400 hover:text-white transition-colors">Lend</a></li>
-                <li><a href="/borrow" className="text-gray-400 hover:text-white transition-colors">Borrow</a></li>
-                <li><a href="/reputation" className="text-gray-400 hover:text-white transition-colors">Reputation</a></li>
-                <li><a href="/kyc" className="text-gray-400 hover:text-white transition-colors">KYC</a></li>
+                <li><a href="/lend" className="text-gray-400 hover:text-pink-400 transition-colors duration-200 hover:underline">Lend</a></li>
+                <li><a href="/borrow" className="text-gray-400 hover:text-green-400 transition-colors duration-200 hover:underline">Borrow</a></li>
+                <li><a href="/reputation" className="text-gray-400 hover:text-pink-400 transition-colors duration-200 hover:underline">Reputation</a></li>
+                <li><a href="/kyc" className="text-gray-400 hover:text-green-400 transition-colors duration-200 hover:underline">KYC</a></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-white font-semibold mb-4">Support</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="/help" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-                <li><a href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-                <li><a href="/terms-of-service.html" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="/privacy-policy.html" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                <li><a href="/help" className="text-gray-400 hover:text-pink-400 transition-colors duration-200 hover:underline">Help Center</a></li>
+                <li><a href="/contact" className="text-gray-400 hover:text-green-400 transition-colors duration-200 hover:underline">Contact Us</a></li>
+                <li><a href="/terms-of-service.html" className="text-gray-400 hover:text-pink-400 transition-colors duration-200 hover:underline">Terms of Service</a></li>
+                <li><a href="/privacy-policy.html" className="text-gray-400 hover:text-green-400 transition-colors duration-200 hover:underline">Privacy Policy</a></li>
               </ul>
             </div>
           </div>

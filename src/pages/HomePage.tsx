@@ -345,6 +345,7 @@ const HomePage: React.FC = () => {
                   >
                     <span className="relative z-10">Go to Dashboard</span>
                     <ArrowRight className="relative z-10 h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                   </Link>
                 </motion.div>
               ) : (
@@ -364,6 +365,7 @@ const HomePage: React.FC = () => {
                       <Rocket className="relative z-10 h-5 w-5 mr-3" />
                       <span className="relative z-10">Start Lending</span>
                       <ArrowRight className="relative z-10 h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                     </Link>
                   </motion.div>
                   <motion.div
@@ -372,14 +374,15 @@ const HomePage: React.FC = () => {
                   >
                     <Link
                       to="/login"
-                      className="group relative inline-flex items-center justify-center px-12 py-4 border-2 text-white rounded-lg font-bold text-lg transition-all duration-300 overflow-hidden"
+                      className="group relative inline-flex items-center justify-center px-12 py-4 border-2 text-white rounded-lg font-bold text-lg transition-all duration-300 overflow-hidden hover:bg-pink-500/10"
                       style={{
                         borderColor: '#FF5B77',
                         color: '#FF5B77',
                       }}
                     >
-                      <Target className="relative z-10 h-5 w-5 mr-3" />
+                      <Target className="relative z-10 h-5 w-5 mr-3 group-hover:scale-110 transition-transform" />
                       <span className="relative z-10">Request a Loan</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-pink-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                     </Link>
                   </motion.div>
                 </>
@@ -774,20 +777,20 @@ const HomePage: React.FC = () => {
             <div>
               <h4 className="text-white font-semibold mb-4">Platform</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/lend" className="text-gray-400 hover:text-green-400 transition-colors">Lend</Link></li>
-                <li><Link to="/borrow" className="text-gray-400 hover:text-green-400 transition-colors">Borrow</Link></li>
-                <li><Link to="/reputation" className="text-gray-400 hover:text-green-400 transition-colors">Reputation</Link></li>
-                <li><Link to="/kyc" className="text-gray-400 hover:text-green-400 transition-colors">KYC</Link></li>
+                <li><Link to="/lend" className="text-gray-400 hover:text-pink-400 transition-colors duration-200 hover:underline">Lend</Link></li>
+                <li><Link to="/borrow" className="text-gray-400 hover:text-green-400 transition-colors duration-200 hover:underline">Borrow</Link></li>
+                <li><Link to="/reputation" className="text-gray-400 hover:text-pink-400 transition-colors duration-200 hover:underline">Reputation</Link></li>
+                <li><Link to="/kyc" className="text-gray-400 hover:text-green-400 transition-colors duration-200 hover:underline">KYC</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-white font-semibold mb-4">Support</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/help" className="text-gray-400 hover:text-green-400 transition-colors">Help Center</Link></li>
-                <li><Link to="/contact" className="text-gray-400 hover:text-green-400 transition-colors">Contact Us</Link></li>
-                <li><Link to="/terms-of-service.html" className="text-gray-400 hover:text-green-400 transition-colors">Terms of Service</Link></li>
-                <li><Link to="/privacy-policy.html" className="text-gray-400 hover:text-green-400 transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/help" className="text-gray-400 hover:text-pink-400 transition-colors duration-200 hover:underline">Help Center</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-green-400 transition-colors duration-200 hover:underline">Contact Us</Link></li>
+                <li><Link to="/terms-of-service.html" className="text-gray-400 hover:text-pink-400 transition-colors duration-200 hover:underline">Terms of Service</Link></li>
+                <li><Link to="/privacy-policy.html" className="text-gray-400 hover:text-green-400 transition-colors duration-200 hover:underline">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>
