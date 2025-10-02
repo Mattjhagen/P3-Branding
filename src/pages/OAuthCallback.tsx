@@ -123,8 +123,41 @@ const OAuthCallback: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen bg-black flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      {/* Animated background matching other pages */}
+      <div className="fixed inset-0 overflow-hidden bg-black">
+        <div className="absolute inset-0">
+          {Array.from({ length: 6 }).map((_, i) => {
+            const isPink = i % 2 === 0;
+            const color = isPink ? '#FF5B77' : '#5DE794';
+            return (
+              <motion.div
+                key={`line-${i}`}
+                className="absolute h-px"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${Math.random() * 200 + 50}px`,
+                  transform: `rotate(${Math.random() * 360}deg)`,
+                  background: `linear-gradient(to right, transparent, ${color}, transparent)`,
+                  boxShadow: `0 0 10px ${color}, 0 0 20px ${color}`,
+                }}
+                animate={{
+                  opacity: [0.2, 0.6, 0.2],
+                  scaleX: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 4 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            );
+          })}
+        </div>
+      </div>
+      
+      <div className="relative z-10 max-w-md w-full space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -132,21 +165,46 @@ const OAuthCallback: React.FC = () => {
           className="text-center"
         >
           <div className="flex justify-center mb-8">
-            <img 
-              src="/logo-simple.svg" 
-              alt="P³ Lending" 
-              className="h-16 w-16"
-            />
+            <motion.div
+              animate={{
+                boxShadow: [
+                  '0 0 20px rgba(255, 91, 119, 0.3), 0 0 40px rgba(93, 231, 148, 0.3)',
+                  '0 0 40px rgba(255, 91, 119, 0.6), 0 0 80px rgba(93, 231, 148, 0.6)',
+                  '0 0 20px rgba(255, 91, 119, 0.3), 0 0 40px rgba(93, 231, 148, 0.3)',
+                ],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="relative"
+            >
+              <div 
+                className="absolute inset-0 rounded-full blur-xl opacity-30"
+                style={{
+                  background: 'linear-gradient(45deg, #FF5B77, #5DE794)',
+                }}
+              />
+              <img 
+                src="/logo-p3.svg" 
+                alt="P³ Lending" 
+                className="relative h-16 w-16 filter drop-shadow-2xl"
+              />
+            </motion.div>
           </div>
           
-          <div className="bg-white p-8 rounded-lg shadow-xl">
+          <div className="bg-gray-900 p-8 rounded-lg shadow-xl border border-gray-800">
             {status === 'loading' && (
               <div className="text-center">
-                <Loader2 className="h-12 w-12 mx-auto text-blue-500 animate-spin mb-4" />
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <Loader2 
+                  className="h-12 w-12 mx-auto animate-spin mb-4" 
+                  style={{ color: '#5DE794' }}
+                />
+                <h2 className="text-2xl font-bold text-white mb-2">
                   Authenticating with {getProviderName()}
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   Please wait while we complete your authentication...
                 </p>
               </div>
@@ -154,14 +212,17 @@ const OAuthCallback: React.FC = () => {
 
             {status === 'success' && (
               <div className="text-center">
-                <CheckCircle className="h-12 w-12 mx-auto text-green-500 mb-4" />
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <CheckCircle 
+                  className="h-12 w-12 mx-auto mb-4" 
+                  style={{ color: '#5DE794' }}
+                />
+                <h2 className="text-2xl font-bold text-white mb-2">
                   Authentication Successful!
                 </h2>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-300 mb-4">
                   {message}
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-400">
                   Redirecting to dashboard...
                 </p>
               </div>
@@ -169,14 +230,17 @@ const OAuthCallback: React.FC = () => {
 
             {status === 'error' && (
               <div className="text-center">
-                <XCircle className="h-12 w-12 mx-auto text-red-500 mb-4" />
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <XCircle 
+                  className="h-12 w-12 mx-auto mb-4" 
+                  style={{ color: '#FF5B77' }}
+                />
+                <h2 className="text-2xl font-bold text-white mb-2">
                   Authentication Failed
                 </h2>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-300 mb-4">
                   {message}
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-400">
                   Redirecting to login page...
                 </p>
               </div>

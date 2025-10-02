@@ -90,25 +90,80 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen bg-black flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      {/* Animated background matching homepage */}
+      <div className="fixed inset-0 overflow-hidden bg-black">
+        <div className="absolute inset-0">
+          {Array.from({ length: 8 }).map((_, i) => {
+            const isPink = i % 2 === 0;
+            const color = isPink ? '#FF5B77' : '#5DE794';
+            return (
+              <motion.div
+                key={`line-${i}`}
+                className="absolute h-px"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${Math.random() * 200 + 50}px`,
+                  transform: `rotate(${Math.random() * 360}deg)`,
+                  background: `linear-gradient(to right, transparent, ${color}, transparent)`,
+                  boxShadow: `0 0 10px ${color}, 0 0 20px ${color}`,
+                }}
+                animate={{
+                  opacity: [0.2, 0.6, 0.2],
+                  scaleX: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 4 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            );
+          })}
+        </div>
+      </div>
+      
+      <div className="relative z-10 max-w-md w-full space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="flex justify-center">
-            <img 
-              src="/logo.jpeg" 
-              alt="P³ Lending" 
-              className="h-16 w-16 rounded-full"
-            />
+          <div className="flex justify-center mb-6">
+            <motion.div
+              animate={{
+                boxShadow: [
+                  '0 0 20px rgba(255, 91, 119, 0.3), 0 0 40px rgba(93, 231, 148, 0.3)',
+                  '0 0 40px rgba(255, 91, 119, 0.6), 0 0 80px rgba(93, 231, 148, 0.6)',
+                  '0 0 20px rgba(255, 91, 119, 0.3), 0 0 40px rgba(93, 231, 148, 0.3)',
+                ],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="relative"
+            >
+              <div 
+                className="absolute inset-0 rounded-full blur-xl opacity-30"
+                style={{
+                  background: 'linear-gradient(45deg, #FF5B77, #5DE794)',
+                }}
+              />
+              <img 
+                src="/logo-p3.svg" 
+                alt="P³ Lending" 
+                className="relative h-16 w-16 filter drop-shadow-2xl"
+              />
+            </motion.div>
           </div>
-          <h2 className="mt-6 text-3xl font-bold gradient-text">
+          <h2 className="text-3xl font-bold text-white">
             Welcome back to P³ Lending
           </h2>
-          <p className="mt-2 text-sm text-gray-400">
+          <p className="mt-2 text-sm text-gray-300">
             Sign in to your account to continue
           </p>
         </motion.div>
